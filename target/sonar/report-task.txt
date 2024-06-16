@@ -1,0 +1,7 @@
+organization=gcmes-grupo6
+projectKey=amandajoioso_Skooter_GCMES
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.55129
+dashboardUrl=https://sonarcloud.io/dashboard?id=amandajoioso_Skooter_GCMES
+ceTaskId=AZAjbFouzapxi95ysOCC
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZAjbFouzapxi95ysOCC
