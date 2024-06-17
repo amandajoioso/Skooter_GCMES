@@ -10,10 +10,10 @@ Prof. Dra. Lina Maria Garces Rodriguez
 **Projeto - Parte 2**  
 **Relatório Parcial**
 
-**Amanda Valukas Breviglieri Joioso - 4818232**  
-**Fernando Mezher Silva Lopes - 12725515**  
-**Luiz Henrique Benedito Belorio - 12563814**  
-**Paulo Henrique Vedovatto Turquetti - 13750791**
+**Amanda Joioso - 4818232**  
+**Fernando Lopes - 12725515**  
+**Luiz Belorio - 12563814**  
+**Paulo Turquetti - 13750791**
 
 São Carlos  
 Junho de 2024
