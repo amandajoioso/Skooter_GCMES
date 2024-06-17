@@ -182,8 +182,12 @@ export SONAR_TOKEN="seu-token-aqui"
 
 ### Executando a Análise do SonarCloud
 mvn verify sonar:sonar
+ou
+mvn clean verify
 
 ### Executando o jogo
-mvn exec:java -Dexec.mainClass="com.example.Skooter.Main"
+javac -d target/classes src/main/java/com/example/Skooter/*.java
+java -cp target/classes com.example.Skooter.Main
+
 
 
