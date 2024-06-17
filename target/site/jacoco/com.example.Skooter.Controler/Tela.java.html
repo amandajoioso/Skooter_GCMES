@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tela.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Controler</a> &gt; <span class="el_source">Tela.java</span></div><h1>Tela.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Controler;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.example.Skooter.Auxiliar.Consts;
+import com.example.Skooter.Auxiliar.Desenho;
+import com.example.Skooter.Auxiliar.Posicao;
+import com.example.Skooter.Modelo.BlocoSeta;
+import com.example.Skooter.Modelo.Personagem;
+import com.example.Skooter.Modelo.Skoot;
+
+
+
+public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
+
+    private Skoot skoot;
+    private Fases fase;
+    private ArrayList&lt;Personagem&gt; faseAtual;
+<span class="fc" id="L35">    private final ControleDeJogo cj = new ControleDeJogo();</span>
+    private Graphics g2;
+<span class="fc" id="L37">    private int nivel = 0;</span>
+
+<span class="fc" id="L39">    public Tela() {</span>
+<span class="fc" id="L40">        Desenho.setCenario(this);</span>
+<span class="fc" id="L41">        initComponents();</span>
+<span class="fc" id="L42">        this.addMouseListener(this); /*mouse*/</span>
+
+<span class="fc" id="L44">        this.addKeyListener(this);   /*teclado*/</span>
+        /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
+<span class="fc" id="L46">        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,</span>
+<span class="fc" id="L47">                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);</span>
+
+
+<span class="fc" id="L50">        faseAtual = new ArrayList&lt;Personagem&gt;();</span>
+
+
+<span class="fc" id="L53">    }</span>
+
+
+    public void addPersonagem(Personagem umPersonagem) {
+<span class="nc" id="L57">        faseAtual.add(umPersonagem);</span>
+<span class="nc" id="L58">    }</span>
+
+    public void removePersonagem(Personagem umPersonagem) {
+<span class="nc" id="L61">        faseAtual.remove(umPersonagem);</span>
+<span class="nc" id="L62">    }</span>
+
+    public Graphics getGraphicsBuffer(){
+<span class="nc" id="L65">        return g2;</span>
+    }
+    public void paint(Graphics gOld) {
+<span class="nc" id="L68">        Graphics g = this.getBufferStrategy().getDrawGraphics();</span>
+        /*Criamos um contexto gráfico*/
+<span class="nc" id="L70">        g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);</span>
+        /*************Desenha cenário de fundo**************/
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        for (int i = 0; i &lt; Consts.RES; i++) {</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            for (int j = 0; j &lt; Consts.RES; j++) {</span>
+                // Desenha o cenário de fundo com base no nível atual
+                try {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">                    if(nivel == 0){</span>
+<span class="nc" id="L77">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;MenuPrincipal.png&quot;);</span>
+<span class="nc" id="L78">                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);</span>
+<span class="nc" id="L79">                    }</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                    else if(nivel == 1){</span>
+<span class="nc" id="L81">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;fundo_fase1.png&quot;);</span>
+<span class="nc" id="L82">                        g2.drawImage(newImage,</span>
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+<span class="nc" id="L84">                    }</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                    else if(nivel == 2){</span>
+<span class="nc" id="L86">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;fundo_fase2.png&quot;);</span>
+<span class="nc" id="L87">                        g2.drawImage(newImage,</span>
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+<span class="nc" id="L89">                    }</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                    else if(nivel == 3){</span>
+<span class="nc" id="L91">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;fundo_fase3.png&quot;);</span>
+<span class="nc" id="L92">                        g2.drawImage(newImage,</span>
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+<span class="nc" id="L94">                    }</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                    else if(nivel == 4){</span>
+<span class="nc" id="L96">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;fundo_fase4.png&quot;);</span>
+<span class="nc" id="L97">                        g2.drawImage(newImage,</span>
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+<span class="nc" id="L99">                    }</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">                    else if(nivel == 5){</span>
+<span class="nc" id="L101">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;fundo_fase5.png&quot;);</span>
+<span class="nc" id="L102">                        g2.drawImage(newImage,</span>
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+<span class="nc" id="L104">                    }</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                    else if(nivel == 6){</span>
+<span class="nc" id="L106">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;derrota.png&quot;);</span>
+<span class="nc" id="L107">                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);</span>
+<span class="nc" id="L108">                    }</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                    else if(nivel == 7){</span>
+<span class="nc" id="L110">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;vitoria.png&quot;);</span>
+<span class="nc" id="L111">                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);</span>
+<span class="nc" id="L112">                    }</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">                    else if(nivel == 8){</span>
+<span class="nc" id="L114">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;controles1.png&quot;);</span>
+<span class="nc" id="L115">                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);</span>
+<span class="nc" id="L116">                    }</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                    else if(nivel == 9){</span>
+<span class="nc" id="L118">                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + &quot;controles2.png&quot;);</span>
+<span class="nc" id="L119">                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);</span>
+                    }
+
+<span class="nc" id="L122">                } catch (IOException ex) {</span>
+<span class="nc" id="L123">                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L124">                }</span>
+            }
+        }
+
+        // Verifica se a lista de fase atual não está vazia
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (!this.faseAtual.isEmpty()) {</span>
+            // Processa e desenha todos os elementos presentes na fase atual
+<span class="nc" id="L131">            this.cj.processaTudo(faseAtual);</span>
+<span class="nc" id="L132">            this.cj.desenhaTudo(faseAtual);</span>
+
+            // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
+<span class="nc bnc" id="L135" title="All 4 branches missed.">            if(!this.cj.temFruta(faseAtual) &amp;&amp; nivel == 1){</span>
+<span class="nc" id="L136">                this.faseAtual.clear();</span>
+<span class="nc" id="L137">                skoot = new Skoot(&quot;skoot.png&quot;);</span>
+<span class="nc" id="L138">                skoot.setPosicao(5, 5);</span>
+<span class="nc" id="L139">                this.addPersonagem(skoot);</span>
+<span class="nc" id="L140">                fase = new Fases();</span>
+<span class="nc" id="L141">                fase.setFase2(skoot);</span>
+<span class="nc" id="L142">                faseAtual = fase;</span>
+<span class="nc" id="L143">                nivel = 2;</span>
+            }
+
+<span class="nc bnc" id="L146" title="All 4 branches missed.">            else if(!this.cj.temFruta(faseAtual) &amp;&amp; nivel == 2){</span>
+<span class="nc" id="L147">                this.faseAtual.clear();</span>
+<span class="nc" id="L148">                skoot = new Skoot(&quot;skoot.png&quot;);</span>
+<span class="nc" id="L149">                skoot.setPosicao(5, 5);</span>
+<span class="nc" id="L150">                this.addPersonagem(skoot);</span>
+<span class="nc" id="L151">                fase = new Fases();</span>
+<span class="nc" id="L152">                fase.setFase3(skoot);</span>
+<span class="nc" id="L153">                faseAtual = fase;</span>
+<span class="nc" id="L154">                nivel = 3;</span>
+            }
+
+<span class="nc bnc" id="L157" title="All 4 branches missed.">            else if(!this.cj.temFruta(faseAtual) &amp;&amp; nivel == 3){</span>
+<span class="nc" id="L158">                this.faseAtual.clear();</span>
+<span class="nc" id="L159">                skoot = new Skoot(&quot;skoot.png&quot;);</span>
+<span class="nc" id="L160">                skoot.setPosicao(5, 5);</span>
+<span class="nc" id="L161">                this.addPersonagem(skoot);</span>
+<span class="nc" id="L162">                fase = new Fases();</span>
+<span class="nc" id="L163">                fase.setFase4(skoot);</span>
+<span class="nc" id="L164">                faseAtual = fase;</span>
+<span class="nc" id="L165">                nivel = 4;</span>
+            }
+
+<span class="nc bnc" id="L168" title="All 4 branches missed.">            else if(!this.cj.temFruta(faseAtual) &amp;&amp; nivel == 4){</span>
+<span class="nc" id="L169">                this.faseAtual.clear();</span>
+<span class="nc" id="L170">                skoot = new Skoot(&quot;skoot.png&quot;);</span>
+<span class="nc" id="L171">                skoot.setPosicao(1, 1);</span>
+<span class="nc" id="L172">                this.addPersonagem(skoot);</span>
+<span class="nc" id="L173">                fase = new Fases();</span>
+<span class="nc" id="L174">                fase.setFase5(skoot);</span>
+<span class="nc" id="L175">                faseAtual = fase;</span>
+<span class="nc" id="L176">                nivel = 5;</span>
+            }
+
+            // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
+            // Caso as vidas tenham acabado, é mostrada a tela de derrota
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            else if(this.cj.temFruta(faseAtual)){</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">                if(skoot.getVidas() == 0){</span>
+<span class="nc" id="L183">                    this.faseAtual.clear();</span>
+<span class="nc" id="L184">                    nivel = 6;</span>
+                }
+            }
+
+            // Verifica se o jogador concluiu o jogo
+<span class="nc bnc" id="L189" title="All 4 branches missed.">            else if(!this.cj.temFruta(faseAtual) &amp;&amp; nivel == 5){</span>
+<span class="nc" id="L190">                this.faseAtual.clear();</span>
+<span class="nc" id="L191">                nivel = 7;</span>
+            }
+        }
+
+<span class="nc" id="L195">        g.dispose();</span>
+<span class="nc" id="L196">        g2.dispose();</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        if (!getBufferStrategy().contentsLost()) {</span>
+<span class="nc" id="L198">            getBufferStrategy().show();</span>
+        }
+<span class="nc" id="L200">    }</span>
+
+    public void go() {
+<span class="nc" id="L203">        TimerTask task = new TimerTask() {</span>
+            public void run() {
+<span class="nc" id="L205">                repaint();</span>
+<span class="nc" id="L206">            }</span>
+        };
+<span class="nc" id="L208">        Timer timer = new Timer();</span>
+<span class="nc" id="L209">        timer.schedule(task, 0, Consts.PERIOD);</span>
+<span class="nc" id="L210">    }</span>
+
+    public void keyPressed(KeyEvent e) {
+        int movimento; //indica a direcao do movimento
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        if (e.getKeyCode() == KeyEvent.VK_C) {</span>
+<span class="nc" id="L215">            this.faseAtual.clear();</span>
+
+
+            //MOVIMENTOS
+<span class="nc bnc" id="L219" title="All 2 branches missed.">        } else if (e.getKeyCode() == KeyEvent.VK_UP) {</span>
+<span class="nc" id="L220">            movimento = 1;</span>
+<span class="nc" id="L221">            Posicao p = new Posicao(skoot.getLinha() - 1, skoot.getColuna());</span>
+
+<span class="nc bnc" id="L223" title="All 2 branches missed.">            if(p.posicaoValida()){</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">                if(!this.colisao(p, movimento)){</span>
+<span class="nc" id="L225">                    skoot.moveUp();</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                    while(this.caiuEmSeta());</span>
+                }
+            }
+
+<span class="nc bnc" id="L230" title="All 2 branches missed.">        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {</span>
+<span class="nc" id="L231">            movimento = 2;</span>
+<span class="nc" id="L232">            Posicao p = new Posicao(skoot.getLinha() + 1, skoot.getColuna());</span>
+
+<span class="nc bnc" id="L234" title="All 2 branches missed.">            if(p.posicaoValida()){</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                if(!this.colisao(p, movimento)){</span>
+<span class="nc" id="L236">                    skoot.moveDown();</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">                    while(this.caiuEmSeta());</span>
+                }
+            }
+
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {</span>
+<span class="nc" id="L242">            movimento = 3;</span>
+<span class="nc" id="L243">            Posicao p = new Posicao(skoot.getLinha(), skoot.getColuna() + 1);</span>
+
+<span class="nc bnc" id="L245" title="All 2 branches missed.">            if(p.posicaoValida()){</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">                if(!this.colisao(p, movimento)){</span>
+<span class="nc" id="L247">                    skoot.moveRight();</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">                    while(this.caiuEmSeta());</span>
+                }
+            }
+
+<span class="nc bnc" id="L252" title="All 2 branches missed.">        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {</span>
+<span class="nc" id="L253">            movimento = 4;</span>
+<span class="nc" id="L254">            Posicao p = new Posicao(skoot.getLinha(), skoot.getColuna() - 1);</span>
+
+<span class="nc bnc" id="L256" title="All 2 branches missed.">            if(p.posicaoValida()){</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">                if(!this.colisao(p, movimento)){</span>
+<span class="nc" id="L258">                    skoot.moveLeft();</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">                    while(this.caiuEmSeta());</span>
+                }
+            }
+
+<span class="nc" id="L263">        }</span>
+
+        // começa o jogo
+<span class="nc bnc" id="L266" title="All 2 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_R) {</span>
+<span class="nc" id="L267">            skoot = new Skoot(&quot;skoot.png&quot;);</span>
+<span class="nc" id="L268">            skoot.setPosicao(3, 4);</span>
+<span class="nc" id="L269">            this.addPersonagem(skoot);</span>
+<span class="nc" id="L270">            fase = new Fases();</span>
+<span class="nc" id="L271">            fase.setFase1(skoot);</span>
+<span class="nc" id="L272">            faseAtual = fase;</span>
+<span class="nc" id="L273">            nivel = 1;</span>
+        }
+
+        // vai para o Menu Principal
+<span class="nc bnc" id="L277" title="All 2 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_M) {</span>
+<span class="nc" id="L278">            nivel = 0;</span>
+        }
+
+        // vai para as instruções de jogo
+<span class="nc bnc" id="L282" title="All 2 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_J) {</span>
+<span class="nc" id="L283">            nivel = 8;</span>
+        }
+
+        // navegação entre as telas de instrução
+<span class="nc bnc" id="L287" title="All 4 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_P &amp;&amp; nivel == 8) {</span>
+<span class="nc" id="L288">            nivel = 9;</span>
+        }
+
+        // navegação entre as telas de instrução
+<span class="nc bnc" id="L292" title="All 4 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_B &amp;&amp; nivel == 9) {</span>
+<span class="nc" id="L293">            nivel = 8;</span>
+        }
+
+        // salva o jogo
+<span class="nc bnc" id="L297" title="All 2 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_S) {</span>
+<span class="nc" id="L298">            salvar(fase, nivel);</span>
+        }
+
+        // recarrega o jogo
+<span class="nc bnc" id="L302" title="All 2 branches missed.">        else if (e.getKeyCode() == KeyEvent.VK_L) {</span>
+<span class="nc" id="L303">            fase = recarregar();</span>
+<span class="nc" id="L304">            this.faseAtual.clear();</span>
+<span class="nc" id="L305">            faseAtual = fase;</span>
+<span class="nc" id="L306">            this.skoot = carregaSkoot();</span>
+<span class="nc" id="L307">            this.nivel = fase.getNivel(); // Definir o valor do nível recuperado</span>
+
+        }
+
+<span class="nc bnc" id="L311" title="All 2 branches missed.">        if(nivel == 1) {</span>
+<span class="nc" id="L312">            this.setTitle(&quot;-&gt; Cell: &quot; + (skoot.getPosicao().getLinha()) + &quot;, &quot;</span>
+<span class="nc" id="L313">                    + (skoot.getPosicao().getColuna()));</span>
+        }
+<span class="nc" id="L315">    }</span>
+
+    public void mousePressed(MouseEvent e) {
+        /* Clique do mouse desligado*/
+<span class="nc" id="L319">        int x = e.getX();</span>
+<span class="nc" id="L320">        int y = e.getY();</span>
+
+<span class="nc" id="L322">        this.setTitle(&quot;X: &quot;+ x + &quot;, Y: &quot; + y +</span>
+                &quot; -&gt; Cell: &quot; + (y/Consts.CELL_SIDE) + &quot;, &quot; + (x/Consts.CELL_SIDE));
+
+<span class="nc" id="L325">        this.skoot.setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);</span>
+
+<span class="nc" id="L327">        repaint();</span>
+<span class="nc" id="L328">    }</span>
+
+
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="fc" id="L334">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L335">        setTitle(&quot;POO2023-1 - Skooter&quot;);</span>
+<span class="fc" id="L336">        setAlwaysOnTop(true);</span>
+<span class="fc" id="L337">        setAutoRequestFocus(false);</span>
+<span class="fc" id="L338">        setResizable(false);</span>
+
+<span class="fc" id="L340">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="fc" id="L341">        getContentPane().setLayout(layout);</span>
+<span class="fc" id="L342">        layout.setHorizontalGroup(</span>
+<span class="fc" id="L343">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L344">                        .addGap(0, 561, Short.MAX_VALUE)</span>
+        );
+<span class="fc" id="L346">        layout.setVerticalGroup(</span>
+<span class="fc" id="L347">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L348">                        .addGap(0, 500, Short.MAX_VALUE)</span>
+        );
+
+<span class="fc" id="L351">        pack();</span>
+<span class="fc" id="L352">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+
+    public void mouseMoved(MouseEvent e) {
+<span class="nc" id="L357">    }</span>
+
+    public void mouseClicked(MouseEvent e) {
+<span class="nc" id="L360">    }</span>
+
+    public void mouseReleased(MouseEvent e) {
+<span class="nc" id="L363">    }</span>
+
+    public void mouseEntered(MouseEvent e) {
+<span class="nc" id="L366">    }</span>
+
+    public void mouseExited(MouseEvent e) {
+<span class="nc" id="L369">    }</span>
+
+    public void mouseDragged(MouseEvent e) {
+<span class="nc" id="L372">    }</span>
+
+    public void keyTyped(KeyEvent e) {
+<span class="nc" id="L375">    }</span>
+
+    public void keyReleased(KeyEvent e) {
+<span class="nc" id="L378">    }</span>
+
+    // Verifica se há colisão entre a posição p e os obstáculos presentes na fase atual
+    public Boolean colisao(Posicao p, int movimento) {
+
+<span class="nc bnc" id="L383" title="All 2 branches missed.">        for (Personagem obstaculo : faseAtual) {</span>
+
+<span class="nc" id="L385">            Posicao posicaoObstaculo = obstaculo.getPosicao();</span>
+
+<span class="nc bnc" id="L387" title="All 4 branches missed.">            if (posicaoObstaculo.getLinha() == p.getLinha() &amp;&amp; posicaoObstaculo.getColuna() == p.getColuna()) {     //houve colisao</span>
+<span class="nc bnc" id="L388" title="All 2 branches missed.">                if (obstaculo.isbTransponivel()) {    //Se transponivel</span>
+<span class="nc" id="L389">                    return false;</span>
+
+<span class="nc bnc" id="L391" title="All 2 branches missed.">                } else if (obstaculo.isbMovivel()) {   //Se movivel -&gt; empurrar</span>
+
+<span class="nc" id="L393">                    return this.empurrar(obstaculo, movimento);</span>
+
+<span class="nc bnc" id="L395" title="All 2 branches missed.">                } else if (obstaculo.isbMortal()) {</span>
+<span class="nc" id="L396">                    skoot.perderVida();</span>
+                }
+<span class="nc" id="L398">                return true;</span>
+            }
+<span class="nc" id="L400">        }</span>
+<span class="nc" id="L401">        return false;   //nao houve colisao</span>
+    }
+
+    // Verifica se há colisão entre a posição p e os obstáculos presentes na fase atual
+    public Boolean colisao2(Posicao p){
+
+<span class="nc bnc" id="L407" title="All 2 branches missed.">        for (Personagem obstaculo : faseAtual) {</span>
+
+<span class="nc" id="L409">            Posicao posicaoObstaculo = obstaculo.getPosicao();</span>
+
+<span class="nc bnc" id="L411" title="All 4 branches missed.">            if (posicaoObstaculo.getLinha() == p.getLinha() &amp;&amp; posicaoObstaculo.getColuna() == p.getColuna()) {     //houve colisao</span>
+
+<span class="nc" id="L413">                return true;    //houve colisao</span>
+
+
+            }
+<span class="nc" id="L417">        }</span>
+<span class="nc" id="L418">        return false;   //nao houve colisao</span>
+    }
+
+    // Move o obstáculo na direção especificada pelo movimento
+    public boolean empurrar(Personagem obstaculo, int movimento){
+<span class="nc" id="L423">        Posicao p = null;</span>
+
+<span class="nc bnc" id="L425" title="All 5 branches missed.">        switch (movimento) {</span>
+            case 1 -&gt; { //Move up
+<span class="nc" id="L427">                p = new Posicao(obstaculo.getLinha() - 1, obstaculo.getColuna());</span>
+<span class="nc bnc" id="L428" title="All 2 branches missed.">                if (p.posicaoValida()) {</span>
+<span class="nc bnc" id="L429" title="All 2 branches missed.">                    if (!this.colisao2(p)) {</span>
+<span class="nc" id="L430">                        obstaculo.setPosicao(p.getLinha(), p.getColuna());</span>
+                    } else {
+<span class="nc bnc" id="L432" title="All 2 branches missed.">                        if (obstaculo.isbRemovivel())</span>
+<span class="nc" id="L433">                            this.removePersonagem(obstaculo);</span>
+<span class="nc" id="L434">                        return true;</span>
+                    }
+<span class="nc" id="L436">                } else return true;</span>
+            }
+            case 2 -&gt; { //Move down
+<span class="nc" id="L439">                p = new Posicao(obstaculo.getLinha() + 1, obstaculo.getColuna());</span>
+<span class="nc bnc" id="L440" title="All 2 branches missed.">                if (p.posicaoValida()) {</span>
+<span class="nc bnc" id="L441" title="All 2 branches missed.">                    if (!this.colisao2(p)) {</span>
+<span class="nc" id="L442">                        obstaculo.setPosicao(p.getLinha(), p.getColuna());</span>
+                    } else {
+<span class="nc bnc" id="L444" title="All 2 branches missed.">                        if (obstaculo.isbRemovivel())</span>
+<span class="nc" id="L445">                            this.removePersonagem(obstaculo);</span>
+<span class="nc" id="L446">                        return true;</span>
+                    }
+<span class="nc" id="L448">                } else return true;</span>
+            }
+            case 3 -&gt; { //Move right
+<span class="nc" id="L451">                p = new Posicao(obstaculo.getLinha(), obstaculo.getColuna() + 1);</span>
+<span class="nc bnc" id="L452" title="All 2 branches missed.">                if (p.posicaoValida()) {</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">                    if (!this.colisao2(p)) {</span>
+<span class="nc" id="L454">                        obstaculo.setPosicao(p.getLinha(), p.getColuna());</span>
+                    } else {
+<span class="nc bnc" id="L456" title="All 2 branches missed.">                        if (obstaculo.isbRemovivel())</span>
+<span class="nc" id="L457">                            this.removePersonagem(obstaculo);</span>
+<span class="nc" id="L458">                        return true;</span>
+                    }
+<span class="nc" id="L460">                } else return true;</span>
+            }
+            case 4 -&gt; { //Move left
+<span class="nc" id="L463">                p = new Posicao(obstaculo.getLinha(), obstaculo.getColuna() - 1);</span>
+<span class="nc bnc" id="L464" title="All 2 branches missed.">                if (p.posicaoValida()) {</span>
+<span class="nc bnc" id="L465" title="All 2 branches missed.">                    if (!this.colisao2(p)) {</span>
+<span class="nc" id="L466">                        obstaculo.setPosicao(p.getLinha(), p.getColuna());</span>
+                    } else {
+<span class="nc bnc" id="L468" title="All 2 branches missed.">                        if (obstaculo.isbRemovivel())</span>
+<span class="nc" id="L469">                            this.removePersonagem(obstaculo);</span>
+<span class="nc" id="L470">                        return true;</span>
+                    }
+<span class="nc" id="L472">                } else return true;</span>
+            }
+            default -&gt; {
+            }
+        }
+
+<span class="nc" id="L478">        return false;</span>
+    }
+
+    // Verifica se o personagem principal caiu em um bloco seta
+    public boolean caiuEmSeta(){
+
+<span class="nc bnc" id="L484" title="All 2 branches missed.">        for (Personagem seta : faseAtual) {</span>
+<span class="nc" id="L485">            Posicao posicaoSeta = seta.getPosicao();</span>
+
+<span class="nc bnc" id="L487" title="All 2 branches missed.">            if (seta instanceof BlocoSeta) {</span>
+<span class="nc bnc" id="L488" title="All 4 branches missed.">                if (posicaoSeta.getLinha() == this.skoot.getLinha() &amp;&amp; posicaoSeta.getColuna() == this.skoot.getColuna()) {     //houve colisao</span>
+
+<span class="nc bnc" id="L490" title="All 5 branches missed.">                    switch (seta.getDirecao()) {</span>
+<span class="nc" id="L491">                        case 1 -&gt; skoot.moveUp();     // Move para cima</span>
+<span class="nc" id="L492">                        case 2 -&gt; skoot.moveDown();   // Move para baixo</span>
+<span class="nc" id="L493">                        case 3 -&gt; skoot.moveRight();  // Move para a direita</span>
+<span class="nc" id="L494">                        case 4 -&gt; skoot.moveLeft();   // Move para a esquerda</span>
+<span class="nc" id="L495">                        default -&gt; skoot.setPosicao(0, 0);  // Define a posição</span>
+                    }
+
+
+<span class="nc" id="L499">                    return true;</span>
+                }
+            }
+<span class="nc" id="L502">        }</span>
+
+<span class="nc" id="L504">        return false;</span>
+
+
+    }
+
+    public static void salvar(Fases jogo, int nivel) {
+        // Salva o jogo em um arquivo
+
+        try {
+<span class="nc" id="L513">            FileOutputStream fileOut = new FileOutputStream(&quot;jogo_salvo.ser&quot;);</span>
+<span class="nc" id="L514">            ObjectOutputStream out = new ObjectOutputStream(fileOut);</span>
+<span class="nc" id="L515">            out.writeObject(jogo);  // Salva o objeto Fases no arquivo</span>
+<span class="nc" id="L516">            out.writeInt(nivel);    // Salva o valor do nível</span>
+<span class="nc" id="L517">            out.close();</span>
+<span class="nc" id="L518">            fileOut.close();</span>
+<span class="nc" id="L519">        } catch (IOException e) {</span>
+<span class="nc" id="L520">            e.printStackTrace();</span>
+<span class="nc" id="L521">        }</span>
+<span class="nc" id="L522">    }</span>
+
+    public static Fases recarregar() {
+        // Recarrega o jogo a partir de um arquivo
+
+<span class="nc" id="L527">        Fases jogo = null;</span>
+<span class="nc" id="L528">        int nivel = 0;</span>
+
+        try {
+<span class="nc" id="L531">            FileInputStream fileIn = new FileInputStream(&quot;jogo_salvo.ser&quot;);</span>
+<span class="nc" id="L532">            ObjectInputStream in = new ObjectInputStream(fileIn);</span>
+<span class="nc" id="L533">            jogo = (Fases) in.readObject();  // Lê o objeto Fases do arquivo</span>
+<span class="nc" id="L534">            nivel = in.readInt();            // Lê o valor do nível</span>
+<span class="nc" id="L535">            in.close();</span>
+<span class="nc" id="L536">            fileIn.close();</span>
+<span class="nc" id="L537">        } catch (IOException | ClassNotFoundException e) {</span>
+<span class="nc" id="L538">            e.printStackTrace();</span>
+<span class="nc" id="L539">        }</span>
+
+<span class="nc bnc" id="L541" title="All 2 branches missed.">        if (jogo != null) {</span>
+<span class="nc" id="L542">            jogo.setNivel(nivel);  // Configura o valor do nível no objeto Fases</span>
+        }
+
+<span class="nc" id="L545">        return jogo;</span>
+    }
+
+
+    public Skoot carregaSkoot() {
+        // Carrega o objeto Skoot da fase salva
+<span class="nc bnc" id="L551" title="All 2 branches missed.">        for (Personagem personagem : faseAtual) {</span>
+<span class="nc bnc" id="L552" title="All 2 branches missed.">            if (personagem instanceof Skoot) {</span>
+<span class="nc" id="L553">                return (Skoot) personagem;</span>
+            }
+<span class="nc" id="L555">        }</span>
+<span class="nc" id="L556">        return null; // Retorna null caso nenhum objeto Skoot seja encontrado</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

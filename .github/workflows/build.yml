@@ -36,4 +36,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=amandajoioso_Skooter_GCMES -Dsonar.organization=gcmes-grupo6 -Dsonar.host.url=https://sonarcloud.io
-# Shallow clones should be disabled for a better relevancy of analysis trigger
+# Shallow clones should be disabled for a better relevancy of analysis trigger 
