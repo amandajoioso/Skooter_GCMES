@@ -181,7 +181,7 @@ setx SONAR_TOKEN "seu-token-aqui"
 export SONAR_TOKEN="seu-token-aqui"
 
 ### Executando a Análise do SonarCloud
-mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=amandajoioso_Skooter_GCMES -Dsonar.organization=gcmes-grupo6 -Dsonar.host.url=https://sonarcloud.io
+mvn verify sonar:sonar
 
 ### Executando o jogo
 mvn exec:java -Dexec.mainClass="com.example.Skooter.Main"
