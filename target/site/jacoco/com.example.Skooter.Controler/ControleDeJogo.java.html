@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControleDeJogo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Controler</a> &gt; <span class="el_source">ControleDeJogo.java</span></div><h1>ControleDeJogo.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Controler;
+
+import java.util.ArrayList;
+import com.example.Skooter.Modelo.Fruta;
+import com.example.Skooter.Modelo.Personagem;
+import com.example.Skooter.Modelo.Skoot;
+
+public class ControleDeJogo {
+
+    private int vidas;
+    private int faseAtual;
+
+<span class="fc" id="L13">    public ControleDeJogo() {</span>
+<span class="fc" id="L14">        this.vidas = 3; // Iniciar com 3 vidas</span>
+<span class="fc" id="L15">        this.faseAtual = 1; // Iniciar na fase 1</span>
+<span class="fc" id="L16">    }</span>
+
+    // Método responsável por desenhar todos os personagens na tela
+    public void desenhaTudo(ArrayList&lt;Personagem&gt; e) {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (Personagem personagem : e) {</span>
+<span class="nc" id="L21">            personagem.autoDesenho(); // Chama o método de autoDesenho de cada personagem</span>
+<span class="nc" id="L22">        }</span>
+<span class="nc" id="L23">    }</span>
+
+    // Método responsável por processar as interações entre os personagens em uma fase
+    public void processaTudo(ArrayList&lt;Personagem&gt; umaFase) {
+<span class="nc" id="L27">        Skoot skoot = (Skoot) umaFase.get(0); // Obtém o personagem principal (Skoot) da fase</span>
+        Personagem pIesimoPersonagem;
+
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (int i = 1; i &lt; umaFase.size(); i++) {</span>
+<span class="nc" id="L31">            pIesimoPersonagem = umaFase.get(i);</span>
+
+            // Verifica se o personagem principal colidiu com o i-ésimo personagem da fase
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (skoot.getPosicao().igual(pIesimoPersonagem.getPosicao())) {</span>
+
+                // Verifica se o personagem é transponível, removível e não mortal
+<span class="nc bnc" id="L37" title="All 6 branches missed.">                if (pIesimoPersonagem.isbTransponivel() &amp;&amp; pIesimoPersonagem.isbRemovivel() &amp;&amp; !pIesimoPersonagem.isbMortal()) {</span>
+<span class="nc" id="L38">                    umaFase.remove(pIesimoPersonagem); // Remove o personagem da fase</span>
+                }
+            }
+        }
+<span class="nc" id="L42">    }</span>
+
+    // Método que verifica se ainda existem frutas no jogo
+    public boolean temFruta(ArrayList&lt;Personagem&gt; fruta) {
+        Personagem frutaT;
+
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        for (int i = 1; i &lt; fruta.size(); i++) {</span>
+<span class="nc" id="L49">            frutaT = fruta.get(i);</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (frutaT instanceof Fruta) {</span>
+                // Ainda há frutas no jogo
+<span class="nc" id="L53">                return true;</span>
+            }
+        }
+
+        // Acabaram as frutas
+<span class="nc" id="L58">        return false;</span>
+    }
+
+    // Método para iniciar o jogo
+    public void iniciarJogo() {
+        // Lógica para iniciar o jogo
+<span class="fc" id="L64">        this.vidas = 3; // Reiniciar vidas</span>
+<span class="fc" id="L65">        this.faseAtual = 1; // Reiniciar para a fase 1</span>
+<span class="fc" id="L66">    }</span>
+
+    // Método para obter a fase atual
+    public int getFaseAtual() {
+<span class="fc" id="L70">        return faseAtual;</span>
+    }
+
+    // Método para obter o número de vidas restantes
+    public int getVidas() {
+<span class="fc" id="L75">        return vidas;</span>
+    }
+
+    // Método para reduzir uma vida
+    public void perderVida() {
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (vidas &gt; 0) {</span>
+<span class="fc" id="L81">            vidas--;</span>
+        }
+<span class="fc" id="L83">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

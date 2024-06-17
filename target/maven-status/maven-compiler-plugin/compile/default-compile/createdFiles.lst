@@ -1,0 +1,17 @@
+com\example\Skooter\Modelo\BlocoSeta.class
+com\example\Skooter\Modelo\Personagem.class
+com\example\Skooter\Auxiliar\Posicao.class
+com\example\Skooter\Controler\ControleDeJogo.class
+com\example\Skooter\Modelo\Fruta.class
+com\example\Skooter\Controler\Tela.class
+com\example\Skooter\Main$1.class
+com\example\Skooter\Modelo\BlocoEstatico.class
+com\example\Skooter\Auxiliar\Desenho.class
+com\example\Skooter\Musica.class
+com\example\Skooter\Modelo\Skoot.class
+com\example\Skooter\Main.class
+com\example\Skooter\Modelo\BlocoMovivel.class
+com\example\Skooter\Auxiliar\Consts.class
+com\example\Skooter\Controler\Fases.class
+com\example\Skooter\Controler\Tela$1.class
+com\example\Skooter\Modelo\ZigueZague.class
