@@ -32,25 +32,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Skoot skoot;
     private Fases fase;
     private ArrayList&lt;Personagem&gt; faseAtual;
-<span class="fc" id="L35">    private final ControleDeJogo cj = new ControleDeJogo();</span>
+<span class="nc" id="L35">    private final ControleDeJogo cj = new ControleDeJogo();</span>
     private Graphics g2;
-<span class="fc" id="L37">    private int nivel = 0;</span>
+<span class="nc" id="L37">    private int nivel = 0;</span>
 
-<span class="fc" id="L39">    public Tela() {</span>
-<span class="fc" id="L40">        Desenho.setCenario(this);</span>
-<span class="fc" id="L41">        initComponents();</span>
-<span class="fc" id="L42">        this.addMouseListener(this); /*mouse*/</span>
+<span class="nc" id="L39">    public Tela() {</span>
+<span class="nc" id="L40">        Desenho.setCenario(this);</span>
+<span class="nc" id="L41">        initComponents();</span>
+<span class="nc" id="L42">        this.addMouseListener(this); /*mouse*/</span>
 
-<span class="fc" id="L44">        this.addKeyListener(this);   /*teclado*/</span>
+<span class="nc" id="L44">        this.addKeyListener(this);   /*teclado*/</span>
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
-<span class="fc" id="L46">        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,</span>
-<span class="fc" id="L47">                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);</span>
+<span class="nc" id="L46">        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,</span>
+<span class="nc" id="L47">                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);</span>
 
 
-<span class="fc" id="L50">        faseAtual = new ArrayList&lt;Personagem&gt;();</span>
+<span class="nc" id="L50">        faseAtual = new ArrayList&lt;Personagem&gt;();</span>
 
 
-<span class="fc" id="L53">    }</span>
+<span class="nc" id="L53">    }</span>
 
 
     public void addPersonagem(Personagem umPersonagem) {
@@ -331,25 +331,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="fc" id="L334">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
-<span class="fc" id="L335">        setTitle(&quot;POO2023-1 - Skooter&quot;);</span>
-<span class="fc" id="L336">        setAlwaysOnTop(true);</span>
-<span class="fc" id="L337">        setAutoRequestFocus(false);</span>
-<span class="fc" id="L338">        setResizable(false);</span>
+<span class="nc" id="L334">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L335">        setTitle(&quot;POO2023-1 - Skooter&quot;);</span>
+<span class="nc" id="L336">        setAlwaysOnTop(true);</span>
+<span class="nc" id="L337">        setAutoRequestFocus(false);</span>
+<span class="nc" id="L338">        setResizable(false);</span>
 
-<span class="fc" id="L340">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="fc" id="L341">        getContentPane().setLayout(layout);</span>
-<span class="fc" id="L342">        layout.setHorizontalGroup(</span>
-<span class="fc" id="L343">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="fc" id="L344">                        .addGap(0, 561, Short.MAX_VALUE)</span>
+<span class="nc" id="L340">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L341">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L342">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L343">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L344">                        .addGap(0, 561, Short.MAX_VALUE)</span>
         );
-<span class="fc" id="L346">        layout.setVerticalGroup(</span>
-<span class="fc" id="L347">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="fc" id="L348">                        .addGap(0, 500, Short.MAX_VALUE)</span>
+<span class="nc" id="L346">        layout.setVerticalGroup(</span>
+<span class="nc" id="L347">                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L348">                        .addGap(0, 500, Short.MAX_VALUE)</span>
         );
 
-<span class="fc" id="L351">        pack();</span>
-<span class="fc" id="L352">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L351">        pack();</span>
+<span class="nc" id="L352">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
