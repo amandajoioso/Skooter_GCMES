@@ -69,61 +69,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
         /*************Desenha cenário de fundo**************/
-        for (int i = 0; i < Consts.RES; i++) {
-            for (int j = 0; j < Consts.RES; j++) {
-                // Desenha o cenário de fundo com base no nível atual
-                try {
-                    if(nivel == 0){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "MenuPrincipal.png");
-                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
-                    }
-                    else if(nivel == 1){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase1.png");
-                        g2.drawImage(newImage,
-                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-                    }
-                    else if(nivel == 2){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase2.png");
-                        g2.drawImage(newImage,
-                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-                    }
-                    else if(nivel == 3){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase3.png");
-                        g2.drawImage(newImage,
-                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-                    }
-                    else if(nivel == 4){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase4.png");
-                        g2.drawImage(newImage,
-                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-                    }
-                    else if(nivel == 5){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase5.png");
-                        g2.drawImage(newImage,
-                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-                    }
-                    else if(nivel == 6){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "derrota.png");
-                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
-                    }
-                    else if(nivel == 7){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "vitoria.png");
-                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
-                    }
-                    else if(nivel == 8){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "controles1.png");
-                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
-                    }
-                    else if(nivel == 9){
-                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "controles2.png");
-                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
-                    }
 
-                } catch (IOException ex) {
-                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        desenhaCenario(g2);
+        
 
         // Verifica se a lista de fase atual não está vazia
         if (!this.faseAtual.isEmpty()) {
@@ -196,6 +144,65 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
+        }
+    }
+
+
+    public void desenhaCenario(Graphics g2){
+        for (int i = 0; i < Consts.RES; i++) {
+            for (int j = 0; j < Consts.RES; j++) {
+                // Desenha o cenário de fundo com base no nível atual
+                try {
+                    if(nivel == 0){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "MenuPrincipal.png");
+                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
+                    }
+                    else if(nivel == 1){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase1.png");
+                        g2.drawImage(newImage,
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
+                    else if(nivel == 2){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase2.png");
+                        g2.drawImage(newImage,
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
+                    else if(nivel == 3){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase3.png");
+                        g2.drawImage(newImage,
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
+                    else if(nivel == 4){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase4.png");
+                        g2.drawImage(newImage,
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
+                    else if(nivel == 5){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "fundo_fase5.png");
+                        g2.drawImage(newImage,
+                                j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
+                    else if(nivel == 6){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "derrota.png");
+                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
+                    }
+                    else if(nivel == 7){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "vitoria.png");
+                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
+                    }
+                    else if(nivel == 8){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "controles1.png");
+                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
+                    }
+                    else if(nivel == 9){
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "controles2.png");
+                        g2.drawImage(newImage, 0 , 0 , Consts.CELL_SIDE * Consts.RES, Consts.CELL_SIDE * Consts.RES, null);
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
