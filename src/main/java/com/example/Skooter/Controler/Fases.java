@@ -14,6 +14,11 @@ import com.example.Skooter.Modelo.ZigueZague;
 public class Fases extends ArrayList<Personagem>{
 
     public void setFase1(Skoot skoot){
+        String caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+        Musica musica = new Musica(caminhoMusica);
+        musica.play(); // Mudança de tocar() para play()
+
+
         this.clear();
         this.add(skoot);
 
@@ -253,6 +258,9 @@ public class Fases extends ArrayList<Personagem>{
     }
 
     public void setFase2(Skoot skoot){
+        String caminhoMusica = new java.io.File("musica/TBless-froggy-Fraud-Adventure.mp3").getAbsolutePath();
+        Musica musica = new Musica(caminhoMusica);
+        musica.play(); // Mudança de tocar() para play()
         this.clear();
         this.add(skoot);
 
@@ -503,6 +511,9 @@ public class Fases extends ArrayList<Personagem>{
 
 
     public void setFase3(Skoot skoot){
+        String caminhoMusica = new java.io.File("musica/imgirllikeyou.mp3").getAbsolutePath();
+        Musica musica = new Musica(caminhoMusica);
+        musica.play(); // Mudança de tocar() para play()
         this.clear();
         this.add(skoot);
 
@@ -740,6 +751,9 @@ public class Fases extends ArrayList<Personagem>{
 
 
     public void setFase4(Skoot skoot){
+        String caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+        Musica musica = new Musica(caminhoMusica);
+        musica.play(); // Mudança de tocar() para play()
         this.clear();
         this.add(skoot);
 
@@ -1007,6 +1021,9 @@ public class Fases extends ArrayList<Personagem>{
 
 
     public void setFase5(Skoot skoot){
+        String caminhoMusica = new java.io.File("musica/TBless-froggy-Fraud-Adventure.mp3").getAbsolutePath();
+        Musica musica = new Musica(caminhoMusica);
+        musica.play(); // Mudança de tocar() para play()
         this.clear();
         this.add(skoot);
 
