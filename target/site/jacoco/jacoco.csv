@@ -1,0 +1,18 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Skooter,com.example.Skooter.Controler,Fases,4462,0,2,0,1038,0,9,0,8,0
+Skooter,com.example.Skooter.Controler,Tela,1362,0,172,0,300,0,113,0,24,0
+Skooter,com.example.Skooter.Controler,Tela.new TimerTask() {...},10,0,0,0,3,0,2,0,2,0
+Skooter,com.example.Skooter.Controler,ControleDeJogo,104,0,18,0,28,0,17,0,8,0
+Skooter,com.example.Skooter.Modelo,BlocoSeta,50,0,8,0,16,0,6,0,2,0
+Skooter,com.example.Skooter.Modelo,Fruta,16,0,0,0,7,0,2,0,2,0
+Skooter,com.example.Skooter.Modelo,Skoot,62,0,0,0,17,0,8,0,8,0
+Skooter,com.example.Skooter.Modelo,BlocoEstatico,43,0,7,0,14,0,6,0,2,0
+Skooter,com.example.Skooter.Modelo,ZigueZague,167,0,24,0,24,0,14,0,2,0
+Skooter,com.example.Skooter.Modelo,Personagem,141,0,0,0,43,0,20,0,20,0
+Skooter,com.example.Skooter.Modelo,BlocoMovivel,57,0,6,0,20,0,10,0,7,0
+Skooter,com.example.Skooter,Main,8,0,0,0,3,0,2,0,2,0
+Skooter,com.example.Skooter,Musica,35,0,4,0,14,0,5,0,3,0
+Skooter,com.example.Skooter,Main.new Runnable() {...},29,0,0,0,9,0,2,0,2,0
+Skooter,com.example.Skooter.Auxiliar,Consts,8,0,0,0,2,0,2,0,2,0
+Skooter,com.example.Skooter.Auxiliar,Desenho,22,0,0,0,7,0,5,0,5,0
+Skooter,com.example.Skooter.Auxiliar,Posicao,54,0,12,0,14,0,12,0,6,0

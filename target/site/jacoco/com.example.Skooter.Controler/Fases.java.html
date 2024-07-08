@@ -1,0 +1,1454 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fases.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Controler</a> &gt; <span class="el_source">Fases.java</span></div><h1>Fases.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Controler;
+
+import java.util.ArrayList;
+
+import com.example.Skooter.Modelo.BlocoEstatico;
+import com.example.Skooter.Modelo.BlocoMovivel;
+import com.example.Skooter.Modelo.BlocoSeta;
+import com.example.Skooter.Modelo.Fruta;
+import com.example.Skooter.Modelo.Personagem;
+import com.example.Skooter.Modelo.Skoot;
+import com.example.Skooter.Modelo.ZigueZague;
+
+
+<span class="nc" id="L14">public class Fases extends ArrayList&lt;Personagem&gt;{</span>
+
+    public void setFase1(Skoot skoot){
+<span class="nc" id="L17">        this.clear();</span>
+<span class="nc" id="L18">        this.add(skoot);</span>
+
+
+
+        //Blocos
+<span class="nc" id="L23">        BlocoEstatico bv1 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L24">        bv1.setPosicao(1, 1);</span>
+<span class="nc" id="L25">        this.add(bv1);</span>
+
+<span class="nc" id="L27">        BlocoEstatico bv2 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L28">        bv2.setPosicao(1, 3);</span>
+<span class="nc" id="L29">        this.add(bv2);</span>
+
+<span class="nc" id="L31">        BlocoEstatico bv3 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L32">        bv3.setPosicao(1, 5);</span>
+<span class="nc" id="L33">        this.add(bv3);</span>
+
+<span class="nc" id="L35">        BlocoEstatico bv4 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L36">        bv4.setPosicao(1, 7);</span>
+<span class="nc" id="L37">        this.add(bv4);</span>
+
+<span class="nc" id="L39">        BlocoEstatico bv5 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L40">        bv5.setPosicao(1, 9);</span>
+<span class="nc" id="L41">        this.add(bv5);</span>
+
+<span class="nc" id="L43">        BlocoEstatico bv6 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L44">        bv6.setPosicao(3, 1);</span>
+<span class="nc" id="L45">        this.add(bv6);</span>
+
+<span class="nc" id="L47">        BlocoEstatico bv7 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L48">        bv7.setPosicao(3, 3);</span>
+<span class="nc" id="L49">        this.add(bv7);</span>
+
+<span class="nc" id="L51">        BlocoEstatico bv8 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L52">        bv8.setPosicao(3, 5);</span>
+<span class="nc" id="L53">        this.add(bv8);</span>
+
+<span class="nc" id="L55">        BlocoEstatico bv9 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L56">        bv9.setPosicao(3, 7);</span>
+<span class="nc" id="L57">        this.add(bv9);</span>
+
+<span class="nc" id="L59">        BlocoEstatico bv10 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L60">        bv10.setPosicao(3, 9);</span>
+<span class="nc" id="L61">        this.add(bv10);</span>
+
+<span class="nc" id="L63">        BlocoEstatico bv11 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L64">        bv11.setPosicao(5, 1);</span>
+<span class="nc" id="L65">        this.add(bv11);</span>
+
+<span class="nc" id="L67">        BlocoEstatico bv12 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L68">        bv12.setPosicao(5, 3);</span>
+<span class="nc" id="L69">        this.add(bv12);</span>
+
+<span class="nc" id="L71">        BlocoEstatico bv13 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L72">        bv13.setPosicao(5, 5);</span>
+<span class="nc" id="L73">        this.add(bv13);</span>
+
+<span class="nc" id="L75">        BlocoEstatico bv14 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L76">        bv14.setPosicao(5, 7);</span>
+<span class="nc" id="L77">        this.add(bv14);</span>
+
+<span class="nc" id="L79">        BlocoEstatico bv15 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L80">        bv15.setPosicao(5, 9);</span>
+<span class="nc" id="L81">        this.add(bv15);</span>
+
+<span class="nc" id="L83">        BlocoEstatico bv16 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L84">        bv16.setPosicao(7, 1);</span>
+<span class="nc" id="L85">        this.add(bv16);</span>
+
+<span class="nc" id="L87">        BlocoEstatico bv17 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L88">        bv17.setPosicao(7, 3);</span>
+<span class="nc" id="L89">        this.add(bv17);</span>
+
+<span class="nc" id="L91">        BlocoEstatico bv18 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L92">        bv18.setPosicao(7, 5);</span>
+<span class="nc" id="L93">        this.add(bv18);</span>
+
+<span class="nc" id="L95">        BlocoEstatico bv19 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L96">        bv19.setPosicao(7, 7);</span>
+<span class="nc" id="L97">        this.add(bv19);</span>
+
+<span class="nc" id="L99">        BlocoEstatico bv20 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L100">        bv20.setPosicao(7, 9);</span>
+<span class="nc" id="L101">        this.add(bv20);</span>
+
+<span class="nc" id="L103">        BlocoEstatico bv21 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L104">        bv21.setPosicao(9, 1);</span>
+<span class="nc" id="L105">        this.add(bv21);</span>
+
+<span class="nc" id="L107">        BlocoEstatico bv22 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L108">        bv22.setPosicao(9, 3);</span>
+<span class="nc" id="L109">        this.add(bv22);</span>
+
+<span class="nc" id="L111">        BlocoEstatico bv23 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L112">        bv23.setPosicao(9, 5);</span>
+<span class="nc" id="L113">        this.add(bv23);</span>
+
+<span class="nc" id="L115">        BlocoEstatico bv24 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L116">        bv24.setPosicao(9, 7);</span>
+<span class="nc" id="L117">        this.add(bv24);</span>
+
+<span class="nc" id="L119">        BlocoEstatico bv25 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L120">        bv25.setPosicao(9, 9);</span>
+<span class="nc" id="L121">        this.add(bv25);</span>
+
+<span class="nc" id="L123">        BlocoMovivel bverde1 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L124">        bverde1.setPosicao(0, 1);</span>
+<span class="nc" id="L125">        this.add(bverde1);</span>
+
+<span class="nc" id="L127">        BlocoMovivel bverde2 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L128">        bverde2.setPosicao(0, 5);</span>
+<span class="nc" id="L129">        this.add(bverde2);</span>
+
+<span class="nc" id="L131">        BlocoMovivel bverde3 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L132">        bverde3.setPosicao(1, 2);</span>
+<span class="nc" id="L133">        this.add(bverde3);</span>
+
+<span class="nc" id="L135">        BlocoMovivel bverde4 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L136">        bverde4.setPosicao(1, 8);</span>
+<span class="nc" id="L137">        this.add(bverde4);</span>
+
+<span class="nc" id="L139">        BlocoMovivel bverde5 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L140">        bverde5.setPosicao(1, 10);</span>
+<span class="nc" id="L141">        this.add(bverde5);</span>
+
+<span class="nc" id="L143">        BlocoMovivel bverde6 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L144">        bverde6.setPosicao(2, 1);</span>
+<span class="nc" id="L145">        this.add(bverde6);</span>
+
+<span class="nc" id="L147">        BlocoMovivel bverde7 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L148">        bverde7.setPosicao(2, 5);</span>
+<span class="nc" id="L149">        this.add(bverde7);</span>
+
+<span class="nc" id="L151">        BlocoMovivel bverde8 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L152">        bverde8.setPosicao(3, 0);</span>
+<span class="nc" id="L153">        this.add(bverde8);</span>
+
+<span class="nc" id="L155">        BlocoMovivel bverde9 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L156">        bverde9.setPosicao(3, 8);</span>
+<span class="nc" id="L157">        this.add(bverde9);</span>
+
+<span class="nc" id="L159">        BlocoMovivel bverde10 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L160">        bverde10.setPosicao(4, 1);</span>
+<span class="nc" id="L161">        this.add(bverde10);</span>
+
+<span class="nc" id="L163">        BlocoMovivel bverde11 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L164">        bverde11.setPosicao(4, 9);</span>
+<span class="nc" id="L165">        this.add(bverde11);</span>
+
+<span class="nc" id="L167">        BlocoMovivel bverde12 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L168">        bverde12.setPosicao(5, 2);</span>
+<span class="nc" id="L169">        this.add(bverde12);</span>
+
+<span class="nc" id="L171">        BlocoMovivel bverde13 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L172">        bverde13.setPosicao(5, 6);</span>
+<span class="nc" id="L173">        this.add(bverde13);</span>
+
+<span class="nc" id="L175">        BlocoMovivel bverde14 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L176">        bverde14.setPosicao(6, 5);</span>
+<span class="nc" id="L177">        this.add(bverde14);</span>
+
+<span class="nc" id="L179">        BlocoMovivel bverde15 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L180">        bverde15.setPosicao(6, 7);</span>
+<span class="nc" id="L181">        this.add(bverde15);</span>
+
+<span class="nc" id="L183">        BlocoMovivel bverde16 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L184">        bverde16.setPosicao(7, 8);</span>
+<span class="nc" id="L185">        this.add(bverde16);</span>
+
+<span class="nc" id="L187">        BlocoMovivel bverde17 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L188">        bverde17.setPosicao(7, 10);</span>
+<span class="nc" id="L189">        this.add(bverde17);</span>
+
+<span class="nc" id="L191">        BlocoMovivel bverde18 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L192">        bverde18.setPosicao(8, 3);</span>
+<span class="nc" id="L193">        this.add(bverde18);</span>
+
+<span class="nc" id="L195">        BlocoMovivel bverde19 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L196">        bverde19.setPosicao(8, 9);</span>
+<span class="nc" id="L197">        this.add(bverde19);</span>
+
+<span class="nc" id="L199">        BlocoMovivel bverde20 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L200">        bverde20.setPosicao(9, 0);</span>
+<span class="nc" id="L201">        this.add(bverde20);</span>
+
+<span class="nc" id="L203">        BlocoMovivel bverde21 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L204">        bverde21.setPosicao(9, 2);</span>
+<span class="nc" id="L205">        this.add(bverde21);</span>
+
+<span class="nc" id="L207">        BlocoMovivel bverde22 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L208">        bverde22.setPosicao(9, 6);</span>
+<span class="nc" id="L209">        this.add(bverde22);</span>
+
+<span class="nc" id="L211">        BlocoMovivel bverde23 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L212">        bverde23.setPosicao(9, 8);</span>
+<span class="nc" id="L213">        this.add(bverde23);</span>
+
+<span class="nc" id="L215">        BlocoMovivel bverde24 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L216">        bverde24.setPosicao(10, 7);</span>
+<span class="nc" id="L217">        this.add(bverde24);</span>
+
+
+        //Personagens
+<span class="nc" id="L221">        ZigueZague zz1 = new ZigueZague(&quot;roboAmarelo.png&quot;);</span>
+<span class="nc" id="L222">        zz1.setPosicao(2, 0);</span>
+<span class="nc" id="L223">        this.add(zz1);</span>
+
+<span class="nc" id="L225">        ZigueZague zz2 = new ZigueZague(&quot;roboRosa.png&quot;);</span>
+<span class="nc" id="L226">        zz2.setPosicao(0, 9);</span>
+<span class="nc" id="L227">        this.add(zz2);</span>
+
+<span class="nc" id="L229">        ZigueZague zz3 = new ZigueZague(&quot;roboAzul.png&quot;);</span>
+<span class="nc" id="L230">        zz3.setPosicao(10, 1);</span>
+<span class="nc" id="L231">        this.add(zz3);</span>
+
+<span class="nc" id="L233">        ZigueZague zz4 = new ZigueZague(&quot;roboVerde.png&quot;);</span>
+<span class="nc" id="L234">        zz4.setPosicao(10, 9);</span>
+<span class="nc" id="L235">        this.add(zz4);</span>
+
+        //Frutas
+<span class="nc" id="L238">        Fruta cereja = new Fruta(&quot;cereja.png&quot;);</span>
+<span class="nc" id="L239">        cereja.setPosicao(10, 10);</span>
+<span class="nc" id="L240">        this.add(cereja);</span>
+
+<span class="nc" id="L242">        Fruta maca = new Fruta(&quot;maca.png&quot;);</span>
+<span class="nc" id="L243">        maca.setPosicao(10, 0);</span>
+<span class="nc" id="L244">        this.add(maca);</span>
+
+<span class="nc" id="L246">        Fruta uva = new Fruta(&quot;uva.png&quot;);</span>
+<span class="nc" id="L247">        uva.setPosicao(0, 0);</span>
+<span class="nc" id="L248">        this.add(uva);</span>
+
+<span class="nc" id="L250">        Fruta limao = new Fruta(&quot;limao.png&quot;);</span>
+<span class="nc" id="L251">        limao.setPosicao(0, 10);</span>
+<span class="nc" id="L252">        this.add(limao);</span>
+<span class="nc" id="L253">    }</span>
+
+    public void setFase2(Skoot skoot){
+<span class="nc" id="L256">        this.clear();</span>
+<span class="nc" id="L257">        this.add(skoot);</span>
+
+
+
+        //Blocos
+<span class="nc" id="L262">        BlocoEstatico bv1 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L263">        bv1.setPosicao(1, 3);</span>
+<span class="nc" id="L264">        this.add(bv1);</span>
+
+<span class="nc" id="L266">        BlocoEstatico bv2 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L267">        bv2.setPosicao(1, 7);</span>
+<span class="nc" id="L268">        this.add(bv2);</span>
+
+<span class="nc" id="L270">        BlocoEstatico bv3 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L271">        bv3.setPosicao(3, 1);</span>
+<span class="nc" id="L272">        this.add(bv3);</span>
+
+<span class="nc" id="L274">        BlocoEstatico bv4 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L275">        bv4.setPosicao(3, 3);</span>
+<span class="nc" id="L276">        this.add(bv4);</span>
+
+<span class="nc" id="L278">        BlocoEstatico bv5 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L279">        bv5.setPosicao(3, 5);</span>
+<span class="nc" id="L280">        this.add(bv5);</span>
+
+<span class="nc" id="L282">        BlocoEstatico bv6 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L283">        bv6.setPosicao(3, 7);</span>
+<span class="nc" id="L284">        this.add(bv6);</span>
+
+<span class="nc" id="L286">        BlocoEstatico bv7 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L287">        bv7.setPosicao(3, 9);</span>
+<span class="nc" id="L288">        this.add(bv7);</span>
+
+<span class="nc" id="L290">        BlocoEstatico bv8 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L291">        bv8.setPosicao(5, 3);</span>
+<span class="nc" id="L292">        this.add(bv8);</span>
+
+<span class="nc" id="L294">        BlocoEstatico bv9 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L295">        bv9.setPosicao(5, 7);</span>
+<span class="nc" id="L296">        this.add(bv9);</span>
+
+<span class="nc" id="L298">        BlocoEstatico bv10 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L299">        bv10.setPosicao(7, 1);</span>
+<span class="nc" id="L300">        this.add(bv10);</span>
+
+<span class="nc" id="L302">        BlocoEstatico bv11 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L303">        bv11.setPosicao(7, 3);</span>
+<span class="nc" id="L304">        this.add(bv11);</span>
+
+<span class="nc" id="L306">        BlocoEstatico bv12 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L307">        bv12.setPosicao(7, 5);</span>
+<span class="nc" id="L308">        this.add(bv12);</span>
+
+<span class="nc" id="L310">        BlocoEstatico bv13 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L311">        bv13.setPosicao(7, 7);</span>
+<span class="nc" id="L312">        this.add(bv13);</span>
+
+<span class="nc" id="L314">        BlocoEstatico bv14 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L315">        bv14.setPosicao(7, 9);</span>
+<span class="nc" id="L316">        this.add(bv14);</span>
+
+<span class="nc" id="L318">        BlocoEstatico bv15 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L319">        bv15.setPosicao(9, 3);</span>
+<span class="nc" id="L320">        this.add(bv15);</span>
+
+<span class="nc" id="L322">        BlocoEstatico bv16 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L323">        bv16.setPosicao(9, 7);</span>
+<span class="nc" id="L324">        this.add(bv16);</span>
+
+
+        //setas UP
+<span class="nc" id="L328">        BlocoSeta up1 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L329">        up1.setPosicao(3, 0);</span>
+<span class="nc" id="L330">        this.add(up1);</span>
+
+<span class="nc" id="L332">        BlocoSeta up2 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L333">        up2.setPosicao(3, 6);</span>
+<span class="nc" id="L334">        this.add(up2);</span>
+
+<span class="nc" id="L336">        BlocoSeta up3 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L337">        up3.setPosicao(3, 8);</span>
+<span class="nc" id="L338">        this.add(up3);</span>
+
+<span class="nc" id="L340">        BlocoSeta up4 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L341">        up4.setPosicao(4, 0);</span>
+<span class="nc" id="L342">        this.add(up4);</span>
+
+<span class="nc" id="L344">        BlocoSeta up5 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L345">        up5.setPosicao(4, 8);</span>
+<span class="nc" id="L346">        this.add(up5);</span>
+
+<span class="nc" id="L348">        BlocoSeta up6 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L349">        up6.setPosicao(5, 0);</span>
+<span class="nc" id="L350">        this.add(up6);</span>
+
+<span class="nc" id="L352">        BlocoSeta up7 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L353">        up7.setPosicao(6, 0);</span>
+<span class="nc" id="L354">        this.add(up7);</span>
+
+<span class="nc" id="L356">        BlocoSeta up8 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L357">        up8.setPosicao(7, 0);</span>
+<span class="nc" id="L358">        this.add(up8);</span>
+
+<span class="nc" id="L360">        BlocoSeta up9 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L361">        up9.setPosicao(7, 6);</span>
+<span class="nc" id="L362">        this.add(up9);</span>
+
+<span class="nc" id="L364">        BlocoSeta up10 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L365">        up10.setPosicao(7, 8);</span>
+<span class="nc" id="L366">        this.add(up10);</span>
+
+<span class="nc" id="L368">        BlocoSeta up11 = new BlocoSeta(&quot;up.png&quot;);</span>
+<span class="nc" id="L369">        up11.setPosicao(7, 10);</span>
+<span class="nc" id="L370">        this.add(up11);</span>
+
+
+        // setas DOWN
+<span class="nc" id="L374">        BlocoSeta down1 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L375">        down1.setPosicao(2, 4);</span>
+<span class="nc" id="L376">        this.add(down1);</span>
+
+<span class="nc" id="L378">        BlocoSeta down2 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L379">        down2.setPosicao(3, 2);</span>
+<span class="nc" id="L380">        this.add(down2);</span>
+
+<span class="nc" id="L382">        BlocoSeta down3 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L383">        down3.setPosicao(3, 4);</span>
+<span class="nc" id="L384">        this.add(down3);</span>
+
+<span class="nc" id="L386">        BlocoSeta down4 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L387">        down4.setPosicao(3, 10);</span>
+<span class="nc" id="L388">        this.add(down4);</span>
+
+<span class="nc" id="L390">        BlocoSeta down5 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L391">        down5.setPosicao(7, 2);</span>
+<span class="nc" id="L392">        this.add(down5);</span>
+
+<span class="nc" id="L394">        BlocoSeta down6 = new BlocoSeta(&quot;down.png&quot;);</span>
+<span class="nc" id="L395">        down6.setPosicao(7, 4);</span>
+<span class="nc" id="L396">        this.add(down6);</span>
+
+
+
+        // setas RIGHT
+<span class="nc" id="L401">        BlocoSeta right1 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L402">        right1.setPosicao(0, 3);</span>
+<span class="nc" id="L403">        this.add(right1);</span>
+
+<span class="nc" id="L405">        BlocoSeta right2 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L406">        right2.setPosicao(0, 7);</span>
+<span class="nc" id="L407">        this.add(right2);</span>
+
+<span class="nc" id="L409">        BlocoSeta right3 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L410">        right3.setPosicao(2, 3);</span>
+<span class="nc" id="L411">        this.add(right3);</span>
+
+<span class="nc" id="L413">        BlocoSeta right4 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L414">        right4.setPosicao(4, 3);</span>
+<span class="nc" id="L415">        this.add(right4);</span>
+
+<span class="nc" id="L417">        BlocoSeta right5 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L418">        right5.setPosicao(4, 7);</span>
+<span class="nc" id="L419">        this.add(right5);</span>
+
+<span class="nc" id="L421">        BlocoSeta right6 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L422">        right6.setPosicao(6, 3);</span>
+<span class="nc" id="L423">        this.add(right6);</span>
+
+<span class="nc" id="L425">        BlocoSeta rigth7 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L426">        rigth7.setPosicao(8, 3);</span>
+<span class="nc" id="L427">        this.add(rigth7);</span>
+
+<span class="nc" id="L429">        BlocoSeta right8 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L430">        right8.setPosicao(8, 7);</span>
+<span class="nc" id="L431">        this.add(right8);</span>
+
+<span class="nc" id="L433">        BlocoSeta right9 = new BlocoSeta(&quot;right.png&quot;);</span>
+<span class="nc" id="L434">        right9.setPosicao(10, 7);</span>
+<span class="nc" id="L435">        this.add(right9);</span>
+
+
+        // setas LEFT
+<span class="nc" id="L439">        BlocoSeta left1 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L440">        left1.setPosicao(2, 5);</span>
+<span class="nc" id="L441">        this.add(left1);</span>
+
+<span class="nc" id="L443">        BlocoSeta left2 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L444">        left2.setPosicao(2, 6);</span>
+<span class="nc" id="L445">        this.add(left2);</span>
+
+<span class="nc" id="L447">        BlocoSeta left3 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L448">        left3.setPosicao(2, 7);</span>
+<span class="nc" id="L449">        this.add(left3);</span>
+
+<span class="nc" id="L451">        BlocoSeta left4 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L452">        left4.setPosicao(4, 9);</span>
+<span class="nc" id="L453">        this.add(left4);</span>
+
+<span class="nc" id="L455">        BlocoSeta left5 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L456">        left5.setPosicao(4, 10);</span>
+<span class="nc" id="L457">        this.add(left5);</span>
+
+<span class="nc" id="L459">        BlocoSeta left6 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L460">        left6.setPosicao(6, 7);</span>
+<span class="nc" id="L461">        this.add(left6);</span>
+
+<span class="nc" id="L463">        BlocoSeta left7 = new BlocoSeta(&quot;left.png&quot;);</span>
+<span class="nc" id="L464">        left7.setPosicao(10, 3);</span>
+<span class="nc" id="L465">        this.add(left7);</span>
+
+
+
+        //Personagens
+<span class="nc" id="L470">        ZigueZague zz1 = new ZigueZague(&quot;roboAmarelo.png&quot;);</span>
+<span class="nc" id="L471">        zz1.setPosicao(1, 1);</span>
+<span class="nc" id="L472">        this.add(zz1);</span>
+
+<span class="nc" id="L474">        ZigueZague zz2 = new ZigueZague(&quot;roboRosa.png&quot;);</span>
+<span class="nc" id="L475">        zz2.setPosicao(9, 1);</span>
+<span class="nc" id="L476">        this.add(zz2);</span>
+
+<span class="nc" id="L478">        ZigueZague zz3 = new ZigueZague(&quot;roboVerde.png&quot;);</span>
+<span class="nc" id="L479">        zz3.setPosicao(1, 9);</span>
+<span class="nc" id="L480">        this.add(zz3);</span>
+
+<span class="nc" id="L482">        ZigueZague zz4 = new ZigueZague(&quot;roboAzul.png&quot;);</span>
+<span class="nc" id="L483">        zz4.setPosicao(9, 9);</span>
+<span class="nc" id="L484">        this.add(zz4);</span>
+
+        //Frutas
+<span class="nc" id="L487">        Fruta cereja = new Fruta(&quot;cereja.png&quot;);</span>
+<span class="nc" id="L488">        cereja.setPosicao(9, 5);</span>
+<span class="nc" id="L489">        this.add(cereja);</span>
+
+<span class="nc" id="L491">        Fruta maca = new Fruta(&quot;maca.png&quot;);</span>
+<span class="nc" id="L492">        maca.setPosicao(5, 9);</span>
+<span class="nc" id="L493">        this.add(maca);</span>
+
+<span class="nc" id="L495">        Fruta uva = new Fruta(&quot;uva.png&quot;);</span>
+<span class="nc" id="L496">        uva.setPosicao(1, 5);</span>
+<span class="nc" id="L497">        this.add(uva);</span>
+
+<span class="nc" id="L499">        Fruta limao = new Fruta(&quot;limao.png&quot;);</span>
+<span class="nc" id="L500">        limao.setPosicao(5, 1);</span>
+<span class="nc" id="L501">        this.add(limao);</span>
+<span class="nc" id="L502">    }</span>
+
+
+    public void setFase3(Skoot skoot){
+<span class="nc" id="L506">        this.clear();</span>
+<span class="nc" id="L507">        this.add(skoot);</span>
+
+
+
+        //Blocos
+<span class="nc" id="L512">        BlocoMovivel bVermelhoM1 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L513">        bVermelhoM1.setPosicao(1, 1);</span>
+<span class="nc" id="L514">        this.add(bVermelhoM1);</span>
+
+<span class="nc" id="L516">        BlocoMovivel bVermelhoM2 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L517">        bVermelhoM2.setPosicao(1, 2);</span>
+<span class="nc" id="L518">        this.add(bVermelhoM2);</span>
+
+<span class="nc" id="L520">        BlocoMovivel bVermelhoM3 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L521">        bVermelhoM3.setPosicao(1, 3);</span>
+<span class="nc" id="L522">        this.add(bVermelhoM3);</span>
+
+<span class="nc" id="L524">        BlocoMovivel bVermelhoM4 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L525">        bVermelhoM4.setPosicao(1, 4);</span>
+<span class="nc" id="L526">        this.add(bVermelhoM4);</span>
+
+<span class="nc" id="L528">        BlocoMovivel bVermelhoM5 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L529">        bVermelhoM5.setPosicao(1, 5);</span>
+<span class="nc" id="L530">        this.add(bVermelhoM5);</span>
+
+<span class="nc" id="L532">        BlocoMovivel bVermelhoM6 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L533">        bVermelhoM6.setPosicao(1, 6);</span>
+<span class="nc" id="L534">        this.add(bVermelhoM6);</span>
+
+<span class="nc" id="L536">        BlocoMovivel bVermelhoM7 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L537">        bVermelhoM7.setPosicao(1, 7);</span>
+<span class="nc" id="L538">        this.add(bVermelhoM7);</span>
+
+<span class="nc" id="L540">        BlocoMovivel bVermelhoM8 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L541">        bVermelhoM8.setPosicao(1, 8);</span>
+<span class="nc" id="L542">        this.add(bVermelhoM8);</span>
+
+<span class="nc" id="L544">        BlocoMovivel bVermelhoM9 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L545">        bVermelhoM9.setPosicao(1, 9);</span>
+<span class="nc" id="L546">        this.add(bVermelhoM9);</span>
+
+<span class="nc" id="L548">        BlocoMovivel bVermelhoM10 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L549">        bVermelhoM10.setPosicao(2, 1);</span>
+<span class="nc" id="L550">        this.add(bVermelhoM10);</span>
+
+<span class="nc" id="L552">        BlocoMovivel bVermelhoM11 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L553">        bVermelhoM11.setPosicao(2, 9);</span>
+<span class="nc" id="L554">        this.add(bVermelhoM11);</span>
+
+<span class="nc" id="L556">        BlocoMovivel bVermelhoM12 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L557">        bVermelhoM12.setPosicao(3, 1);</span>
+<span class="nc" id="L558">        this.add(bVermelhoM12);</span>
+
+<span class="nc" id="L560">        BlocoMovivel bVermelhoM13 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L561">        bVermelhoM13.setPosicao(3, 3);</span>
+<span class="nc" id="L562">        this.add(bVermelhoM13);</span>
+
+<span class="nc" id="L564">        BlocoMovivel bVermelhoM14 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L565">        bVermelhoM14.setPosicao(3, 4);</span>
+<span class="nc" id="L566">        this.add(bVermelhoM14);</span>
+
+<span class="nc" id="L568">        BlocoMovivel bVermelhoM15 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L569">        bVermelhoM15.setPosicao(3, 5);</span>
+<span class="nc" id="L570">        this.add(bVermelhoM15);</span>
+
+<span class="nc" id="L572">        BlocoMovivel bVermelhoM16 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L573">        bVermelhoM16.setPosicao(3, 6);</span>
+<span class="nc" id="L574">        this.add(bVermelhoM16);</span>
+
+<span class="nc" id="L576">        BlocoMovivel bVermelhoM17 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L577">        bVermelhoM17.setPosicao(3, 7);</span>
+<span class="nc" id="L578">        this.add(bVermelhoM17);</span>
+
+<span class="nc" id="L580">        BlocoMovivel bVermelhoM18 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L581">        bVermelhoM18.setPosicao(3, 9);</span>
+<span class="nc" id="L582">        this.add(bVermelhoM18);</span>
+
+<span class="nc" id="L584">        BlocoMovivel bVermelhoM19 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L585">        bVermelhoM19.setPosicao(4, 1);</span>
+<span class="nc" id="L586">        this.add(bVermelhoM19);</span>
+
+<span class="nc" id="L588">        BlocoMovivel bVermelhoM20 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L589">        bVermelhoM20.setPosicao(4, 3);</span>
+<span class="nc" id="L590">        this.add(bVermelhoM20);</span>
+
+<span class="nc" id="L592">        BlocoMovivel bVermelhoM21 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L593">        bVermelhoM21.setPosicao(4, 7);</span>
+<span class="nc" id="L594">        this.add(bVermelhoM21);</span>
+
+<span class="nc" id="L596">        BlocoMovivel bVermelhoM22 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L597">        bVermelhoM22.setPosicao(4, 9);</span>
+<span class="nc" id="L598">        this.add(bVermelhoM22);</span>
+
+<span class="nc" id="L600">        BlocoMovivel bVermelhoM23 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L601">        bVermelhoM23.setPosicao(5, 1);</span>
+<span class="nc" id="L602">        this.add(bVermelhoM23);</span>
+
+<span class="nc" id="L604">        BlocoMovivel bVermelhoM24 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L605">        bVermelhoM24.setPosicao(5, 3);</span>
+<span class="nc" id="L606">        this.add(bVermelhoM24);</span>
+
+<span class="nc" id="L608">        BlocoMovivel bVermelhoM25 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L609">        bVermelhoM25.setPosicao(5, 7);</span>
+<span class="nc" id="L610">        this.add(bVermelhoM25);</span>
+
+<span class="nc" id="L612">        BlocoMovivel bVermelhoM26 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L613">        bVermelhoM26.setPosicao(5, 9);</span>
+<span class="nc" id="L614">        this.add(bVermelhoM26);</span>
+
+<span class="nc" id="L616">        BlocoMovivel bVermelhoM27 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L617">        bVermelhoM27.setPosicao(6, 1);</span>
+<span class="nc" id="L618">        this.add(bVermelhoM27);</span>
+
+<span class="nc" id="L620">        BlocoMovivel bVermelhoM28 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L621">        bVermelhoM28.setPosicao(6, 3);</span>
+<span class="nc" id="L622">        this.add(bVermelhoM28);</span>
+
+<span class="nc" id="L624">        BlocoMovivel bVermelhoM29 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L625">        bVermelhoM29.setPosicao(6, 7);</span>
+<span class="nc" id="L626">        this.add(bVermelhoM29);</span>
+
+<span class="nc" id="L628">        BlocoMovivel bVermelhoM30 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L629">        bVermelhoM30.setPosicao(6, 9);</span>
+<span class="nc" id="L630">        this.add(bVermelhoM30);</span>
+
+<span class="nc" id="L632">        BlocoMovivel bVermelhoM31 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L633">        bVermelhoM31.setPosicao(7, 1);</span>
+<span class="nc" id="L634">        this.add(bVermelhoM31);</span>
+
+<span class="nc" id="L636">        BlocoMovivel bVermelhoM32 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L637">        bVermelhoM32.setPosicao(7, 3);</span>
+<span class="nc" id="L638">        this.add(bVermelhoM32);</span>
+
+<span class="nc" id="L640">        BlocoMovivel bVermelhoM46 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L641">        bVermelhoM46.setPosicao(7, 4);</span>
+<span class="nc" id="L642">        this.add(bVermelhoM46);</span>
+
+<span class="nc" id="L644">        BlocoMovivel bVermelhoM47 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L645">        bVermelhoM47.setPosicao(7, 5);</span>
+<span class="nc" id="L646">        this.add(bVermelhoM47);</span>
+
+<span class="nc" id="L648">        BlocoMovivel bVermelhoM48 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L649">        bVermelhoM48.setPosicao(7, 6);</span>
+<span class="nc" id="L650">        this.add(bVermelhoM48);</span>
+
+<span class="nc" id="L652">        BlocoMovivel bVermelhoM33 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L653">        bVermelhoM33.setPosicao(7, 7);</span>
+<span class="nc" id="L654">        this.add(bVermelhoM33);</span>
+
+<span class="nc" id="L656">        BlocoMovivel bVermelhoM34 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L657">        bVermelhoM34.setPosicao(7, 9);</span>
+<span class="nc" id="L658">        this.add(bVermelhoM34);</span>
+
+<span class="nc" id="L660">        BlocoMovivel bVermelhoM35 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L661">        bVermelhoM35.setPosicao(8, 1);</span>
+<span class="nc" id="L662">        this.add(bVermelhoM35);</span>
+
+<span class="nc" id="L664">        BlocoMovivel bVermelhoM36 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L665">        bVermelhoM36.setPosicao(8, 9);</span>
+<span class="nc" id="L666">        this.add(bVermelhoM36);</span>
+
+<span class="nc" id="L668">        BlocoMovivel bVermelhoM37 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L669">        bVermelhoM37.setPosicao(9, 1);</span>
+<span class="nc" id="L670">        this.add(bVermelhoM37);</span>
+
+<span class="nc" id="L672">        BlocoMovivel bVermelhoM38 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L673">        bVermelhoM38.setPosicao(9, 2);</span>
+<span class="nc" id="L674">        this.add(bVermelhoM38);</span>
+
+<span class="nc" id="L676">        BlocoMovivel bVermelhoM39 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L677">        bVermelhoM39.setPosicao(9, 3);</span>
+<span class="nc" id="L678">        this.add(bVermelhoM39);</span>
+
+<span class="nc" id="L680">        BlocoMovivel bVermelhoM40 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L681">        bVermelhoM40.setPosicao(9, 4);</span>
+<span class="nc" id="L682">        this.add(bVermelhoM40);</span>
+
+<span class="nc" id="L684">        BlocoMovivel bVermelhoM41 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L685">        bVermelhoM41.setPosicao(9, 5);</span>
+<span class="nc" id="L686">        this.add(bVermelhoM41);</span>
+
+<span class="nc" id="L688">        BlocoMovivel bVermelhoM42 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L689">        bVermelhoM42.setPosicao(9, 6);</span>
+<span class="nc" id="L690">        this.add(bVermelhoM42);</span>
+
+<span class="nc" id="L692">        BlocoMovivel bVermelhoM43 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L693">        bVermelhoM43.setPosicao(9, 7);</span>
+<span class="nc" id="L694">        this.add(bVermelhoM43);</span>
+
+<span class="nc" id="L696">        BlocoMovivel bVermelhoM44 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L697">        bVermelhoM44.setPosicao(9, 8);</span>
+<span class="nc" id="L698">        this.add(bVermelhoM44);</span>
+
+<span class="nc" id="L700">        BlocoMovivel bVermelhoM45 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L701">        bVermelhoM45.setPosicao(9, 9);</span>
+<span class="nc" id="L702">        this.add(bVermelhoM45);</span>
+
+
+
+        //Personagens
+<span class="nc" id="L707">        ZigueZague zz1 = new ZigueZague(&quot;roboAmarelo.png&quot;);</span>
+<span class="nc" id="L708">        zz1.setPosicao(0, 5);</span>
+<span class="nc" id="L709">        this.add(zz1);</span>
+
+<span class="nc" id="L711">        ZigueZague zz2 = new ZigueZague(&quot;roboRosa.png&quot;);</span>
+<span class="nc" id="L712">        zz2.setPosicao(2, 5);</span>
+<span class="nc" id="L713">        this.add(zz2);</span>
+
+<span class="nc" id="L715">        ZigueZague zz3 = new ZigueZague(&quot;roboAzul.png&quot;);</span>
+<span class="nc" id="L716">        zz3.setPosicao(8, 5);</span>
+<span class="nc" id="L717">        this.add(zz3);</span>
+
+<span class="nc" id="L719">        ZigueZague zz4 = new ZigueZague(&quot;roboVerde.png&quot;);</span>
+<span class="nc" id="L720">        zz4.setPosicao(10, 5);</span>
+<span class="nc" id="L721">        this.add(zz4);</span>
+
+        //Frutas
+<span class="nc" id="L724">        Fruta sol = new Fruta(&quot;sol.png&quot;);</span>
+<span class="nc" id="L725">        sol.setPosicao(5, 0);</span>
+<span class="nc" id="L726">        this.add(sol);</span>
+
+<span class="nc" id="L728">        Fruta vela = new Fruta(&quot;vela.png&quot;);</span>
+<span class="nc" id="L729">        vela.setPosicao(5, 2);</span>
+<span class="nc" id="L730">        this.add(vela);</span>
+
+<span class="nc" id="L732">        Fruta lampada = new Fruta(&quot;lampada.png&quot;);</span>
+<span class="nc" id="L733">        lampada.setPosicao(5, 8);</span>
+<span class="nc" id="L734">        this.add(lampada);</span>
+
+<span class="nc" id="L736">        Fruta lanterna = new Fruta(&quot;lanterna.png&quot;);</span>
+<span class="nc" id="L737">        lanterna.setPosicao(5, 10);</span>
+<span class="nc" id="L738">        this.add(lanterna);</span>
+<span class="nc" id="L739">    }</span>
+
+
+    public void setFase4(Skoot skoot){
+<span class="nc" id="L743">        this.clear();</span>
+<span class="nc" id="L744">        this.add(skoot);</span>
+
+
+        //Blocos verdes moviveis
+<span class="nc" id="L748">        BlocoMovivel bverde1 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L749">        bverde1.setPosicao(1, 1);</span>
+<span class="nc" id="L750">        this.add(bverde1);</span>
+
+<span class="nc" id="L752">        BlocoMovivel bverde2 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L753">        bverde2.setPosicao(1, 3);</span>
+<span class="nc" id="L754">        this.add(bverde2);</span>
+
+<span class="nc" id="L756">        BlocoMovivel bverde3 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L757">        bverde3.setPosicao(1, 5);</span>
+<span class="nc" id="L758">        this.add(bverde3);</span>
+
+<span class="nc" id="L760">        BlocoMovivel bverde4 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L761">        bverde4.setPosicao(1, 7);</span>
+<span class="nc" id="L762">        this.add(bverde4);</span>
+
+<span class="nc" id="L764">        BlocoMovivel bverde5 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L765">        bverde5.setPosicao(1, 9);</span>
+<span class="nc" id="L766">        this.add(bverde5);</span>
+
+<span class="nc" id="L768">        BlocoMovivel bverde6 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L769">        bverde6.setPosicao(2, 2);</span>
+<span class="nc" id="L770">        this.add(bverde6);</span>
+
+<span class="nc" id="L772">        BlocoMovivel bverde7 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L773">        bverde7.setPosicao(2, 4);</span>
+<span class="nc" id="L774">        this.add(bverde7);</span>
+
+<span class="nc" id="L776">        BlocoMovivel bverde8 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L777">        bverde8.setPosicao(2, 6);</span>
+<span class="nc" id="L778">        this.add(bverde8);</span>
+
+<span class="nc" id="L780">        BlocoMovivel bverde9 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L781">        bverde9.setPosicao(2, 8);</span>
+<span class="nc" id="L782">        this.add(bverde9);</span>
+
+<span class="nc" id="L784">        BlocoMovivel bverde10 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L785">        bverde10.setPosicao(3, 1);</span>
+<span class="nc" id="L786">        this.add(bverde10);</span>
+
+<span class="nc" id="L788">        BlocoMovivel bverde11 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L789">        bverde11.setPosicao(3, 3);</span>
+<span class="nc" id="L790">        this.add(bverde11);</span>
+
+<span class="nc" id="L792">        BlocoMovivel bverde12 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L793">        bverde12.setPosicao(3, 5);</span>
+<span class="nc" id="L794">        this.add(bverde12);</span>
+
+<span class="nc" id="L796">        BlocoMovivel bverde13 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L797">        bverde13.setPosicao(3, 7);</span>
+<span class="nc" id="L798">        this.add(bverde13);</span>
+
+<span class="nc" id="L800">        BlocoMovivel bverde14 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L801">        bverde14.setPosicao(3, 9);</span>
+<span class="nc" id="L802">        this.add(bverde14);</span>
+
+<span class="nc" id="L804">        BlocoMovivel bverde15 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L805">        bverde15.setPosicao(4, 2);</span>
+<span class="nc" id="L806">        this.add(bverde15);</span>
+
+<span class="nc" id="L808">        BlocoMovivel bverde16 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L809">        bverde16.setPosicao(4, 4);</span>
+<span class="nc" id="L810">        this.add(bverde16);</span>
+
+<span class="nc" id="L812">        BlocoMovivel bverde17 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L813">        bverde17.setPosicao(4, 6);</span>
+<span class="nc" id="L814">        this.add(bverde17);</span>
+
+<span class="nc" id="L816">        BlocoMovivel bverde18 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L817">        bverde18.setPosicao(4, 8);</span>
+<span class="nc" id="L818">        this.add(bverde18);</span>
+
+<span class="nc" id="L820">        BlocoMovivel bverde19 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L821">        bverde19.setPosicao(5, 1);</span>
+<span class="nc" id="L822">        this.add(bverde19);</span>
+
+<span class="nc" id="L824">        BlocoMovivel bverde20 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L825">        bverde20.setPosicao(5, 3);</span>
+<span class="nc" id="L826">        this.add(bverde20);</span>
+
+<span class="nc" id="L828">        BlocoMovivel bverde21 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L829">        bverde21.setPosicao(5, 7);</span>
+<span class="nc" id="L830">        this.add(bverde21);</span>
+
+<span class="nc" id="L832">        BlocoMovivel bverde22 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L833">        bverde22.setPosicao(5, 9);</span>
+<span class="nc" id="L834">        this.add(bverde22);</span>
+
+<span class="nc" id="L836">        BlocoMovivel bverde23 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L837">        bverde23.setPosicao(6, 2);</span>
+<span class="nc" id="L838">        this.add(bverde23);</span>
+
+<span class="nc" id="L840">        BlocoMovivel bverde24 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L841">        bverde24.setPosicao(6, 4);</span>
+<span class="nc" id="L842">        this.add(bverde24);</span>
+
+<span class="nc" id="L844">        BlocoMovivel bverde25 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L845">        bverde25.setPosicao(6, 6);</span>
+<span class="nc" id="L846">        this.add(bverde25);</span>
+
+<span class="nc" id="L848">        BlocoMovivel bverde26 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L849">        bverde26.setPosicao(6, 8);</span>
+<span class="nc" id="L850">        this.add(bverde26);</span>
+
+<span class="nc" id="L852">        BlocoMovivel bverde27 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L853">        bverde27.setPosicao(7, 1);</span>
+<span class="nc" id="L854">        this.add(bverde27);</span>
+
+<span class="nc" id="L856">        BlocoMovivel bverde28 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L857">        bverde28.setPosicao(7, 3);</span>
+<span class="nc" id="L858">        this.add(bverde28);</span>
+
+<span class="nc" id="L860">        BlocoMovivel bverde29 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L861">        bverde29.setPosicao(7, 5);</span>
+<span class="nc" id="L862">        this.add(bverde29);</span>
+
+<span class="nc" id="L864">        BlocoMovivel bverde30 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L865">        bverde30.setPosicao(7, 7);</span>
+<span class="nc" id="L866">        this.add(bverde30);</span>
+
+<span class="nc" id="L868">        BlocoMovivel bverde31 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L869">        bverde31.setPosicao(7, 9);</span>
+<span class="nc" id="L870">        this.add(bverde31);</span>
+
+<span class="nc" id="L872">        BlocoMovivel bverde32 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L873">        bverde32.setPosicao(8, 2);</span>
+<span class="nc" id="L874">        this.add(bverde32);</span>
+
+<span class="nc" id="L876">        BlocoMovivel bverde33 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L877">        bverde33.setPosicao(8, 4);</span>
+<span class="nc" id="L878">        this.add(bverde33);</span>
+
+<span class="nc" id="L880">        BlocoMovivel bverde34 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L881">        bverde34.setPosicao(8, 6);</span>
+<span class="nc" id="L882">        this.add(bverde34);</span>
+
+<span class="nc" id="L884">        BlocoMovivel bverde35 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L885">        bverde35.setPosicao(8, 8);</span>
+<span class="nc" id="L886">        this.add(bverde35);</span>
+
+<span class="nc" id="L888">        BlocoMovivel bverde36 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L889">        bverde36.setPosicao(9, 1);</span>
+<span class="nc" id="L890">        this.add(bverde36);</span>
+
+<span class="nc" id="L892">        BlocoMovivel bverde37 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L893">        bverde37.setPosicao(9, 3);</span>
+<span class="nc" id="L894">        this.add(bverde37);</span>
+
+<span class="nc" id="L896">        BlocoMovivel bverde38 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L897">        bverde38.setPosicao(9, 5);</span>
+<span class="nc" id="L898">        this.add(bverde38);</span>
+
+<span class="nc" id="L900">        BlocoMovivel bverde39 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L901">        bverde39.setPosicao(9, 7);</span>
+<span class="nc" id="L902">        this.add(bverde39);</span>
+
+<span class="nc" id="L904">        BlocoMovivel bverde40 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L905">        bverde40.setPosicao(9, 9);</span>
+<span class="nc" id="L906">        this.add(bverde40);</span>
+
+
+        //Bloco vermelho
+<span class="nc" id="L910">        BlocoEstatico bv1 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L911">        bv1.setPosicao(0, 3);</span>
+<span class="nc" id="L912">        this.add(bv1);</span>
+
+<span class="nc" id="L914">        BlocoEstatico bv2 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L915">        bv2.setPosicao(0, 7);</span>
+<span class="nc" id="L916">        this.add(bv2);</span>
+
+<span class="nc" id="L918">        BlocoEstatico bv3 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L919">        bv3.setPosicao(1, 0);</span>
+<span class="nc" id="L920">        this.add(bv3);</span>
+
+<span class="nc" id="L922">        BlocoEstatico bv4 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L923">        bv4.setPosicao(1, 8);</span>
+<span class="nc" id="L924">        this.add(bv4);</span>
+
+<span class="nc" id="L926">        BlocoEstatico bv5 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L927">        bv5.setPosicao(2, 5);</span>
+<span class="nc" id="L928">        this.add(bv5);</span>
+
+<span class="nc" id="L930">        BlocoEstatico bv6 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L931">        bv6.setPosicao(3, 2);</span>
+<span class="nc" id="L932">        this.add(bv6);</span>
+
+<span class="nc" id="L934">        BlocoEstatico bv7 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L935">        bv7.setPosicao(3, 10);</span>
+<span class="nc" id="L936">        this.add(bv7);</span>
+
+<span class="nc" id="L938">        BlocoEstatico bv8 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L939">        bv8.setPosicao(5, 2);</span>
+<span class="nc" id="L940">        this.add(bv8);</span>
+
+<span class="nc" id="L942">        BlocoEstatico bv9 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L943">        bv9.setPosicao(5, 8);</span>
+<span class="nc" id="L944">        this.add(bv9);</span>
+
+<span class="nc" id="L946">        BlocoEstatico bv10 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L947">        bv10.setPosicao(6, 3);</span>
+<span class="nc" id="L948">        this.add(bv10);</span>
+
+<span class="nc" id="L950">        BlocoEstatico bv11 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L951">        bv11.setPosicao(7, 0);</span>
+<span class="nc" id="L952">        this.add(bv11);</span>
+
+<span class="nc" id="L954">        BlocoEstatico bv12 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L955">        bv12.setPosicao(8, 1);</span>
+<span class="nc" id="L956">        this.add(bv12);</span>
+
+<span class="nc" id="L958">        BlocoEstatico bv13 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L959">        bv13.setPosicao(8, 7);</span>
+<span class="nc" id="L960">        this.add(bv13);</span>
+
+<span class="nc" id="L962">        BlocoEstatico bv14 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L963">        bv14.setPosicao(8, 10);</span>
+<span class="nc" id="L964">        this.add(bv14);</span>
+
+<span class="nc" id="L966">        BlocoEstatico bv15 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L967">        bv15.setPosicao(10, 1);</span>
+<span class="nc" id="L968">        this.add(bv15);</span>
+
+
+        //Personagens
+<span class="nc" id="L972">        ZigueZague zz1 = new ZigueZague(&quot;roboAmarelo.png&quot;);</span>
+<span class="nc" id="L973">        zz1.setPosicao(0, 5);</span>
+<span class="nc" id="L974">        this.add(zz1);</span>
+
+<span class="nc" id="L976">        ZigueZague zz2 = new ZigueZague(&quot;roboRosa.png&quot;);</span>
+<span class="nc" id="L977">        zz2.setPosicao(10, 5);</span>
+<span class="nc" id="L978">        this.add(zz2);</span>
+
+<span class="nc" id="L980">        ZigueZague zz3 = new ZigueZague(&quot;roboAzul.png&quot;);</span>
+<span class="nc" id="L981">        zz3.setPosicao(5, 10);</span>
+<span class="nc" id="L982">        this.add(zz3);</span>
+
+<span class="nc" id="L984">        ZigueZague zz4 = new ZigueZague(&quot;roboVerde.png&quot;);</span>
+<span class="nc" id="L985">        zz4.setPosicao(5, 0);</span>
+<span class="nc" id="L986">        this.add(zz4);</span>
+
+
+        //Frutas
+<span class="nc" id="L990">        Fruta sol = new Fruta(&quot;sol.png&quot;);</span>
+<span class="nc" id="L991">        sol.setPosicao(0, 0);</span>
+<span class="nc" id="L992">        this.add(sol);</span>
+
+<span class="nc" id="L994">        Fruta lampada = new Fruta(&quot;lampada.png&quot;);</span>
+<span class="nc" id="L995">        lampada.setPosicao(0, 10);</span>
+<span class="nc" id="L996">        this.add(lampada);</span>
+
+<span class="nc" id="L998">        Fruta vela = new Fruta(&quot;vela.png&quot;);</span>
+<span class="nc" id="L999">        vela.setPosicao(9, 0);</span>
+<span class="nc" id="L1000">        this.add(vela);</span>
+
+<span class="nc" id="L1002">        Fruta lanterna = new Fruta(&quot;lanterna.png&quot;);</span>
+<span class="nc" id="L1003">        lanterna.setPosicao(9, 10);</span>
+<span class="nc" id="L1004">        this.add(lanterna);</span>
+
+<span class="nc" id="L1006">    }</span>
+
+
+    public void setFase5(Skoot skoot){
+<span class="nc" id="L1010">        this.clear();</span>
+<span class="nc" id="L1011">        this.add(skoot);</span>
+
+<span class="nc bnc" id="L1013" title="All 2 branches missed.">        for(int i = 0; i &lt; 11; i++){</span>
+<span class="nc" id="L1014">            BlocoMovivel bverde1 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1015">            bverde1.setPosicao(0, i);</span>
+<span class="nc" id="L1016">            this.add(bverde1);</span>
+        }
+
+<span class="nc" id="L1019">        BlocoMovivel bverde2 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1020">        bverde2.setPosicao(1, 0);</span>
+<span class="nc" id="L1021">        this.add(bverde2);</span>
+
+<span class="nc" id="L1023">        BlocoMovivel bverde3 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1024">        bverde3.setPosicao(1, 2);</span>
+<span class="nc" id="L1025">        this.add(bverde3);</span>
+
+<span class="nc" id="L1027">        BlocoMovivel bverde4 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1028">        bverde4.setPosicao(1, 3);</span>
+<span class="nc" id="L1029">        this.add(bverde4);</span>
+
+<span class="nc" id="L1031">        BlocoMovivel bverde5 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1032">        bverde5.setPosicao(1, 4);</span>
+<span class="nc" id="L1033">        this.add(bverde5);</span>
+
+<span class="nc" id="L1035">        BlocoMovivel bverde6 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1036">        bverde6.setPosicao(1, 5);</span>
+<span class="nc" id="L1037">        this.add(bverde6);</span>
+
+<span class="nc" id="L1039">        BlocoMovivel bverde7 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1040">        bverde7.setPosicao(1, 7);</span>
+<span class="nc" id="L1041">        this.add(bverde7);</span>
+
+<span class="nc" id="L1043">        BlocoMovivel bverde8 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1044">        bverde8.setPosicao(1, 8);</span>
+<span class="nc" id="L1045">        this.add(bverde8);</span>
+
+<span class="nc" id="L1047">        BlocoMovivel bverde9 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1048">        bverde9.setPosicao(1, 9);</span>
+<span class="nc" id="L1049">        this.add(bverde9);</span>
+
+<span class="nc" id="L1051">        BlocoMovivel bverde10 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1052">        bverde10.setPosicao(2, 0);</span>
+<span class="nc" id="L1053">        this.add(bverde10);</span>
+
+<span class="nc" id="L1055">        BlocoMovivel bverde11 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1056">        bverde11.setPosicao(2, 2);</span>
+<span class="nc" id="L1057">        this.add(bverde11);</span>
+
+<span class="nc" id="L1059">        BlocoMovivel bverde12 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1060">        bverde12.setPosicao(2, 3);</span>
+<span class="nc" id="L1061">        this.add(bverde12);</span>
+
+<span class="nc" id="L1063">        BlocoMovivel bverde13 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1064">        bverde13.setPosicao(2, 4);</span>
+<span class="nc" id="L1065">        this.add(bverde13);</span>
+
+<span class="nc" id="L1067">        BlocoMovivel bverde14 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1068">        bverde14.setPosicao(2, 5);</span>
+<span class="nc" id="L1069">        this.add(bverde14);</span>
+
+<span class="nc" id="L1071">        BlocoMovivel bverde15 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1072">        bverde15.setPosicao(2, 6);</span>
+<span class="nc" id="L1073">        this.add(bverde15);</span>
+
+<span class="nc" id="L1075">        BlocoMovivel bverde16 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1076">        bverde16.setPosicao(2, 8);</span>
+<span class="nc" id="L1077">        this.add(bverde16);</span>
+
+<span class="nc" id="L1079">        BlocoMovivel bverde17 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1080">        bverde17.setPosicao(2, 9);</span>
+<span class="nc" id="L1081">        this.add(bverde17);</span>
+
+<span class="nc" id="L1083">        BlocoMovivel bverde18 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1084">        bverde18.setPosicao(2, 10);</span>
+<span class="nc" id="L1085">        this.add(bverde18);</span>
+
+<span class="nc" id="L1087">        BlocoMovivel bverde19 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1088">        bverde19.setPosicao(1, 10);</span>
+<span class="nc" id="L1089">        this.add(bverde19);</span>
+
+<span class="nc" id="L1091">        BlocoMovivel bverde20 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1092">        bverde20.setPosicao(3, 0);</span>
+<span class="nc" id="L1093">        this.add(bverde20);</span>
+
+<span class="nc" id="L1095">        BlocoMovivel bverde21 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1096">        bverde21.setPosicao(3, 1);</span>
+<span class="nc" id="L1097">        this.add(bverde21);</span>
+
+<span class="nc" id="L1099">        BlocoMovivel bverde22 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1100">        bverde22.setPosicao(3, 2);</span>
+<span class="nc" id="L1101">        this.add(bverde22);</span>
+
+<span class="nc" id="L1103">        BlocoMovivel bverde23 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1104">        bverde23.setPosicao(3, 6);</span>
+<span class="nc" id="L1105">        this.add(bverde23);</span>
+
+<span class="nc" id="L1107">        BlocoMovivel bverde24 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1108">        bverde24.setPosicao(3, 8);</span>
+<span class="nc" id="L1109">        this.add(bverde24);</span>
+
+
+<span class="nc" id="L1112">        BlocoMovivel bverde25 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1113">        bverde25.setPosicao(3, 9);</span>
+<span class="nc" id="L1114">        this.add(bverde25);</span>
+
+<span class="nc" id="L1116">        BlocoMovivel bverde26 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1117">        bverde26.setPosicao(3, 10);</span>
+<span class="nc" id="L1118">        this.add(bverde26);</span>
+
+<span class="nc" id="L1120">        BlocoMovivel bverde27 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1121">        bverde27.setPosicao(4, 0);</span>
+<span class="nc" id="L1122">        this.add(bverde27);</span>
+
+<span class="nc" id="L1124">        BlocoMovivel bverde28 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1125">        bverde28.setPosicao(4, 1);</span>
+<span class="nc" id="L1126">        this.add(bverde28);</span>
+
+<span class="nc" id="L1128">        BlocoMovivel bverde29 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1129">        bverde29.setPosicao(4, 2);</span>
+<span class="nc" id="L1130">        this.add(bverde29);</span>
+
+<span class="nc" id="L1132">        BlocoMovivel bverde30 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1133">        bverde30.setPosicao(4, 6);</span>
+<span class="nc" id="L1134">        this.add(bverde30);</span>
+
+<span class="nc" id="L1136">        BlocoMovivel bverde31 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1137">        bverde31.setPosicao(4, 9);</span>
+<span class="nc" id="L1138">        this.add(bverde31);</span>
+
+<span class="nc" id="L1140">        BlocoMovivel bverde32 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1141">        bverde32.setPosicao(4, 10);</span>
+<span class="nc" id="L1142">        this.add(bverde32);</span>
+
+<span class="nc" id="L1144">        BlocoMovivel bverde33 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1145">        bverde33.setPosicao(5, 0);</span>
+<span class="nc" id="L1146">        this.add(bverde33);</span>
+
+<span class="nc" id="L1148">        BlocoMovivel bverde34 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1149">        bverde34.setPosicao(5, 1);</span>
+<span class="nc" id="L1150">        this.add(bverde34);</span>
+
+<span class="nc" id="L1152">        BlocoMovivel bverde35 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1153">        bverde35.setPosicao(5, 2);</span>
+<span class="nc" id="L1154">        this.add(bverde35);</span>
+
+<span class="nc" id="L1156">        BlocoMovivel bverde36 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1157">        bverde36.setPosicao(5, 6);</span>
+<span class="nc" id="L1158">        this.add(bverde36);</span>
+
+<span class="nc" id="L1160">        BlocoMovivel bverde37 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1161">        bverde37.setPosicao(5, 7);</span>
+<span class="nc" id="L1162">        this.add(bverde37);</span>
+
+<span class="nc" id="L1164">        BlocoMovivel bverde38 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1165">        bverde38.setPosicao(5, 8);</span>
+<span class="nc" id="L1166">        this.add(bverde38);</span>
+
+<span class="nc" id="L1168">        BlocoMovivel bverde39 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1169">        bverde39.setPosicao(5, 9);</span>
+<span class="nc" id="L1170">        this.add(bverde39);</span>
+
+<span class="nc" id="L1172">        BlocoMovivel bverde40 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1173">        bverde40.setPosicao(5, 10);</span>
+<span class="nc" id="L1174">        this.add(bverde40);</span>
+
+<span class="nc" id="L1176">        BlocoMovivel bverde41 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1177">        bverde41.setPosicao(6, 0);</span>
+<span class="nc" id="L1178">        this.add(bverde41);</span>
+
+<span class="nc" id="L1180">        BlocoMovivel bverde42 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1181">        bverde42.setPosicao(6, 2);</span>
+<span class="nc" id="L1182">        this.add(bverde42);</span>
+
+<span class="nc" id="L1184">        BlocoMovivel bverde43 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1185">        bverde43.setPosicao(6, 3);</span>
+<span class="nc" id="L1186">        this.add(bverde43);</span>
+
+<span class="nc" id="L1188">        BlocoMovivel bverde44 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1189">        bverde44.setPosicao(6, 4);</span>
+<span class="nc" id="L1190">        this.add(bverde44);</span>
+
+<span class="nc" id="L1192">        BlocoMovivel bverde45 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1193">        bverde45.setPosicao(6, 5);</span>
+<span class="nc" id="L1194">        this.add(bverde45);</span>
+
+<span class="nc" id="L1196">        BlocoMovivel bverde46 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1197">        bverde46.setPosicao(6, 6);</span>
+<span class="nc" id="L1198">        this.add(bverde46);</span>
+
+<span class="nc" id="L1200">        BlocoMovivel bverde47 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1201">        bverde47.setPosicao(6, 7);</span>
+<span class="nc" id="L1202">        this.add(bverde47);</span>
+
+<span class="nc" id="L1204">        BlocoMovivel bverde48 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1205">        bverde48.setPosicao(6, 9);</span>
+<span class="nc" id="L1206">        this.add(bverde48);</span>
+
+<span class="nc" id="L1208">        BlocoMovivel bverde49 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1209">        bverde49.setPosicao(7, 0);</span>
+<span class="nc" id="L1210">        this.add(bverde49);</span>
+
+
+<span class="nc" id="L1213">        BlocoMovivel bverde50 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1214">        bverde50.setPosicao(7, 3);</span>
+<span class="nc" id="L1215">        this.add(bverde50);</span>
+
+<span class="nc" id="L1217">        BlocoMovivel bverde51 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1218">        bverde51.setPosicao(7, 4);</span>
+<span class="nc" id="L1219">        this.add(bverde51);</span>
+
+<span class="nc" id="L1221">        BlocoMovivel bverde52 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1222">        bverde52.setPosicao(7, 5);</span>
+<span class="nc" id="L1223">        this.add(bverde52);</span>
+
+<span class="nc" id="L1225">        BlocoMovivel bverde53 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1226">        bverde53.setPosicao(7, 6);</span>
+<span class="nc" id="L1227">        this.add(bverde53);</span>
+
+<span class="nc" id="L1229">        BlocoMovivel bverde54 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1230">        bverde54.setPosicao(7, 7);</span>
+<span class="nc" id="L1231">        this.add(bverde54);</span>
+
+<span class="nc" id="L1233">        BlocoMovivel bverde55 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1234">        bverde55.setPosicao(7, 9);</span>
+<span class="nc" id="L1235">        this.add(bverde55);</span>
+
+<span class="nc" id="L1237">        BlocoMovivel bverde56 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1238">        bverde56.setPosicao(8, 2);</span>
+<span class="nc" id="L1239">        this.add(bverde56);</span>
+
+<span class="nc" id="L1241">        BlocoMovivel bverde57 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1242">        bverde57.setPosicao(8, 3);</span>
+<span class="nc" id="L1243">        this.add(bverde57);</span>
+
+<span class="nc" id="L1245">        BlocoMovivel bverde58 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1246">        bverde58.setPosicao(8, 6);</span>
+<span class="nc" id="L1247">        this.add(bverde58);</span>
+
+<span class="nc" id="L1249">        BlocoMovivel bverde59 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1250">        bverde59.setPosicao(8, 8);</span>
+<span class="nc" id="L1251">        this.add(bverde59);</span>
+
+<span class="nc" id="L1253">        BlocoMovivel bverde60 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1254">        bverde60.setPosicao(9, 0);</span>
+<span class="nc" id="L1255">        this.add(bverde60);</span>
+
+<span class="nc" id="L1257">        BlocoMovivel bverde61 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1258">        bverde61.setPosicao(9, 1);</span>
+<span class="nc" id="L1259">        this.add(bverde61);</span>
+
+<span class="nc" id="L1261">        BlocoMovivel bverde62 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1262">        bverde62.setPosicao(9, 2);</span>
+<span class="nc" id="L1263">        this.add(bverde62);</span>
+
+<span class="nc" id="L1265">        BlocoMovivel bverde63 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1266">        bverde63.setPosicao(9, 4);</span>
+<span class="nc" id="L1267">        this.add(bverde63);</span>
+
+<span class="nc" id="L1269">        BlocoMovivel bverde64 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1270">        bverde64.setPosicao(9, 5);</span>
+<span class="nc" id="L1271">        this.add(bverde64);</span>
+
+<span class="nc" id="L1273">        BlocoMovivel bverde65 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1274">        bverde65.setPosicao(9, 8);</span>
+<span class="nc" id="L1275">        this.add(bverde65);</span>
+
+<span class="nc" id="L1277">        BlocoMovivel bverde66 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1278">        bverde66.setPosicao(9, 9);</span>
+<span class="nc" id="L1279">        this.add(bverde66);</span>
+
+<span class="nc" id="L1281">        BlocoMovivel bverde67 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1282">        bverde67.setPosicao(9, 10);</span>
+<span class="nc" id="L1283">        this.add(bverde67);</span>
+
+<span class="nc" id="L1285">        BlocoMovivel bverde68 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1286">        bverde68.setPosicao(10, 0);</span>
+<span class="nc" id="L1287">        this.add(bverde68);</span>
+
+<span class="nc" id="L1289">        BlocoMovivel bverde69 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1290">        bverde69.setPosicao(10, 1);</span>
+<span class="nc" id="L1291">        this.add(bverde69);</span>
+
+<span class="nc" id="L1293">        BlocoMovivel bverde70 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1294">        bverde70.setPosicao(10, 2);</span>
+<span class="nc" id="L1295">        this.add(bverde70);</span>
+
+<span class="nc" id="L1297">        BlocoMovivel bverde71 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1298">        bverde71.setPosicao(10, 5);</span>
+<span class="nc" id="L1299">        this.add(bverde71);</span>
+
+<span class="nc" id="L1301">        BlocoMovivel bverde72 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1302">        bverde72.setPosicao(10, 6);</span>
+<span class="nc" id="L1303">        this.add(bverde72);</span>
+
+<span class="nc" id="L1305">        BlocoMovivel bverde73 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1306">        bverde73.setPosicao(10, 9);</span>
+<span class="nc" id="L1307">        this.add(bverde73);</span>
+
+<span class="nc" id="L1309">        BlocoMovivel bve1 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L1310">        bve1.setPosicao(2, 7);</span>
+<span class="nc" id="L1311">        this.add(bve1);</span>
+
+<span class="nc" id="L1313">        BlocoMovivel bve2 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L1314">        bve2.setPosicao(3, 7);</span>
+<span class="nc" id="L1315">        this.add(bve2);</span>
+
+<span class="nc" id="L1317">        BlocoMovivel bve3 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L1318">        bve3.setPosicao(4, 7);</span>
+<span class="nc" id="L1319">        this.add(bve3);</span>
+
+<span class="nc" id="L1321">        BlocoMovivel bve4 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L1322">        bve4.setPosicao(4, 8);</span>
+<span class="nc" id="L1323">        this.add(bve4);</span>
+
+<span class="nc" id="L1325">        BlocoMovivel bve5 = new BlocoMovivel(&quot;blocoVermelhoArrastavel.png&quot;);</span>
+<span class="nc" id="L1326">        bve5.setPosicao(8, 0);</span>
+<span class="nc" id="L1327">        this.add(bve5);</span>
+
+<span class="nc" id="L1329">        BlocoEstatico bv1 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1330">        bv1.setPosicao(1, 6);</span>
+<span class="nc" id="L1331">        this.add(bv1);</span>
+
+<span class="nc" id="L1333">        BlocoEstatico bv2 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1334">        bv2.setPosicao(2, 1);</span>
+<span class="nc" id="L1335">        this.add(bv2);</span>
+
+<span class="nc" id="L1337">        BlocoEstatico bv3 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1338">        bv3.setPosicao(3, 9);</span>
+<span class="nc" id="L1339">        this.add(bv3);</span>
+
+<span class="nc" id="L1341">        BlocoEstatico bv4 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1342">        bv4.setPosicao(3, 10);</span>
+<span class="nc" id="L1343">        this.add(bv4);</span>
+
+<span class="nc" id="L1345">        BlocoEstatico bv5 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1346">        bv5.setPosicao(6, 1);</span>
+<span class="nc" id="L1347">        this.add(bv5);</span>
+
+<span class="nc" id="L1349">        BlocoEstatico bv6 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1350">        bv6.setPosicao(6, 10);</span>
+<span class="nc" id="L1351">        this.add(bv6);</span>
+
+<span class="nc" id="L1353">        BlocoEstatico bv7 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1354">        bv7.setPosicao(7, 1);</span>
+<span class="nc" id="L1355">        this.add(bv7);</span>
+
+<span class="nc" id="L1357">        BlocoEstatico bv8 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1358">        bv8.setPosicao(7, 2);</span>
+<span class="nc" id="L1359">        this.add(bv8);</span>
+
+<span class="nc" id="L1361">        BlocoEstatico bv9 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1362">        bv9.setPosicao(8, 1);</span>
+<span class="nc" id="L1363">        this.add(bv9);</span>
+
+<span class="nc" id="L1365">        BlocoEstatico bv10 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1366">        bv10.setPosicao(8, 4);</span>
+<span class="nc" id="L1367">        this.add(bv10);</span>
+
+<span class="nc" id="L1369">        BlocoEstatico bv11 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1370">        bv11.setPosicao(8, 5);</span>
+<span class="nc" id="L1371">        this.add(bv11);</span>
+
+<span class="nc" id="L1373">        BlocoMovivel bv12 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1374">        bv12.setPosicao(8, 7);</span>
+<span class="nc" id="L1375">        this.add(bv12);</span>
+
+<span class="nc" id="L1377">        BlocoEstatico bv13 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1378">        bv13.setPosicao(8, 9);</span>
+<span class="nc" id="L1379">        this.add(bv13);</span>
+
+<span class="nc" id="L1381">        BlocoEstatico bv14 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1382">        bv14.setPosicao(8, 10);</span>
+<span class="nc" id="L1383">        this.add(bv14);</span>
+
+<span class="nc" id="L1385">        BlocoMovivel bv15 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1386">        bv15.setPosicao(9, 3);</span>
+<span class="nc" id="L1387">        this.add(bv15);</span>
+
+<span class="nc" id="L1389">        BlocoEstatico bv16 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1390">        bv16.setPosicao(9, 6);</span>
+<span class="nc" id="L1391">        this.add(bv16);</span>
+
+<span class="nc" id="L1393">        BlocoMovivel bv17 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1394">        bv17.setPosicao(9, 7);</span>
+<span class="nc" id="L1395">        this.add(bv17);</span>
+
+<span class="nc" id="L1397">        BlocoEstatico bv18 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1398">        bv18.setPosicao(10, 4);</span>
+<span class="nc" id="L1399">        this.add(bv18);</span>
+
+<span class="nc" id="L1401">        BlocoMovivel bv19 = new BlocoMovivel(&quot;blocoVerde.png&quot;);</span>
+<span class="nc" id="L1402">        bv19.setPosicao(10, 8);</span>
+<span class="nc" id="L1403">        this.add(bv19);</span>
+
+<span class="nc" id="L1405">        BlocoEstatico bv20 = new BlocoEstatico(&quot;blocoVermelho.png&quot;);</span>
+<span class="nc" id="L1406">        bv20.setPosicao(6, 8);</span>
+<span class="nc" id="L1407">        this.add(bv20);</span>
+
+        //Personagens
+
+<span class="nc" id="L1411">        ZigueZague zz1 = new ZigueZague(&quot;roboAmarelo.png&quot;);</span>
+<span class="nc" id="L1412">        zz1.setPosicao(3, 3);</span>
+<span class="nc" id="L1413">        this.add(zz1);</span>
+
+<span class="nc" id="L1415">        ZigueZague zz2 = new ZigueZague(&quot;roboRosa.png&quot;);</span>
+<span class="nc" id="L1416">        zz2.setPosicao(4, 3);</span>
+<span class="nc" id="L1417">        this.add(zz2);</span>
+
+<span class="nc" id="L1419">        ZigueZague zz3 = new ZigueZague(&quot;roboAzul.png&quot;);</span>
+<span class="nc" id="L1420">        zz3.setPosicao(3, 4);</span>
+<span class="nc" id="L1421">        this.add(zz3);</span>
+
+<span class="nc" id="L1423">        ZigueZague zz4 = new ZigueZague(&quot;roboVerde.png&quot;);</span>
+<span class="nc" id="L1424">        zz4.setPosicao(4, 4);</span>
+<span class="nc" id="L1425">        this.add(zz4);</span>
+
+        //Frutas
+<span class="nc" id="L1428">        Fruta cereja = new Fruta(&quot;cereja.png&quot;);</span>
+<span class="nc" id="L1429">        cereja.setPosicao(7, 10);</span>
+<span class="nc" id="L1430">        this.add(cereja);</span>
+
+<span class="nc" id="L1432">        Fruta maca = new Fruta(&quot;maca.png&quot;);</span>
+<span class="nc" id="L1433">        maca.setPosicao(10, 3);</span>
+<span class="nc" id="L1434">        this.add(maca);</span>
+
+<span class="nc" id="L1436">        Fruta uva = new Fruta(&quot;uva.png&quot;);</span>
+<span class="nc" id="L1437">        uva.setPosicao(10, 7);</span>
+<span class="nc" id="L1438">        this.add(uva);</span>
+
+<span class="nc" id="L1440">        Fruta limao = new Fruta(&quot;limao.png&quot;);</span>
+<span class="nc" id="L1441">        limao.setPosicao(10, 10);</span>
+<span class="nc" id="L1442">        this.add(limao);</span>
+<span class="nc" id="L1443">    }</span>
+
+<span class="nc" id="L1445">    int nivel = 0;</span>
+    public void setNivel(int nivel) {
+<span class="nc" id="L1447">        this.nivel = nivel;</span>
+<span class="nc" id="L1448">    }</span>
+
+    public int getNivel() {
+<span class="nc" id="L1451">        return nivel;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

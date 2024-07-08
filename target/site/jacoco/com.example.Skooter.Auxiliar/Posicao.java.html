@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Posicao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Auxiliar</a> &gt; <span class="el_source">Posicao.java</span></div><h1>Posicao.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Auxiliar;
+
+import java.io.Serializable;
+
+public class Posicao  implements Serializable{
+    private int	linha;
+    private int coluna;
+
+<span class="nc" id="L9">    public Posicao(int linha, int coluna){</span>
+<span class="nc" id="L10">        this.setPosicao(linha,coluna);</span>
+<span class="nc" id="L11">    }</span>
+
+    public void setPosicao(int linha, int coluna){
+<span class="nc" id="L14">        this.linha = linha;</span>
+<span class="nc" id="L15">        this.coluna = coluna;</span>
+<span class="nc" id="L16">    }</span>
+
+
+    public int getLinha(){
+<span class="nc" id="L20">        return linha;</span>
+    }
+
+    public int getColuna(){
+<span class="nc" id="L24">        return coluna;</span>
+    }
+
+    public boolean igual(Posicao posicao){
+<span class="nc bnc" id="L28" title="All 4 branches missed.">        return (linha == posicao.getLinha() &amp;&amp; coluna == posicao.getColuna());</span>
+    }
+
+
+    public boolean posicaoValida(){    //Verifica se personagem tenta passar da margem
+
+<span class="nc bnc" id="L34" title="All 4 branches missed.">        if(this.getLinha() &lt; 0 || this.getLinha() &gt; 10)</span>
+<span class="nc" id="L35">            return false;</span>
+<span class="nc bnc" id="L36" title="All 4 branches missed.">        if(this.getColuna() &lt; 0 || this.getColuna() &gt; 10)</span>
+<span class="nc" id="L37">            return false;</span>
+
+<span class="nc" id="L39">        return true;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

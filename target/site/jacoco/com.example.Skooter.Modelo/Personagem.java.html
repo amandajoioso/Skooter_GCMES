@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Personagem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Modelo</a> &gt; <span class="el_source">Personagem.java</span></div><h1>Personagem.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Modelo;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.Serializable;
+
+import javax.swing.ImageIcon;
+
+import com.example.Skooter.Auxiliar.Consts;
+import com.example.Skooter.Auxiliar.Desenho;
+import com.example.Skooter.Auxiliar.Posicao;
+
+public abstract class Personagem implements Serializable {
+
+    protected ImageIcon iImage;
+    protected Posicao pPosicao;
+    protected boolean bTransponivel; // Pode passar por cima?
+    protected boolean bMovivel; // Pode mover?
+    protected boolean bRemovivel; // Pode remover?
+    protected boolean bMortal;       // Se encostar, morre?
+    protected String nome;
+    protected int direcao; // Direção da seta (1: cima, 2: baixo, 3: direita, 4: esquerda)
+
+
+<span class="nc" id="L27">    protected Personagem(String sNomeImagePNG) {</span>
+<span class="nc" id="L28">        this.nome =sNomeImagePNG;</span>
+<span class="nc" id="L29">        this.pPosicao = new Posicao(1, 1);</span>
+<span class="nc" id="L30">        this.direcao = 0;</span>
+<span class="nc" id="L31">        this.setbTransponivel(true);</span>
+<span class="nc" id="L32">        this.setbMovivel(false);</span>
+<span class="nc" id="L33">        this.setbRemovivel(false);</span>
+<span class="nc" id="L34">        this.setbMortal(false);</span>
+        try {
+<span class="nc" id="L36">            iImage = new ImageIcon(new java.io.File(&quot;.&quot;).getCanonicalPath() + Consts.PATH + sNomeImagePNG);</span>
+<span class="nc" id="L37">            Image img = iImage.getImage();</span>
+<span class="nc" id="L38">            BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);</span>
+<span class="nc" id="L39">            Graphics g = bi.createGraphics();</span>
+<span class="nc" id="L40">            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);</span>
+<span class="nc" id="L41">            iImage = new ImageIcon(bi);</span>
+<span class="nc" id="L42">        } catch (IOException ex) {</span>
+<span class="nc" id="L43">            System.out.println(ex.getMessage());</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getNome(){
+<span class="nc" id="L48">        return nome;</span>
+    }
+
+    public Posicao getPosicao() {
+<span class="nc" id="L52">        return pPosicao;</span>
+    }
+
+    public int getLinha(){
+<span class="nc" id="L56">        return this.pPosicao.getLinha();</span>
+    }
+
+    public int getColuna(){
+<span class="nc" id="L60">        return this.pPosicao.getColuna();</span>
+    }
+
+    public int getDirecao(){
+<span class="nc" id="L64">        return this.direcao;</span>
+    }
+
+    public boolean isbTransponivel() {
+<span class="nc" id="L68">        return bTransponivel;</span>
+    }
+
+    public void setbTransponivel(boolean bTransponivel) {
+<span class="nc" id="L72">        this.bTransponivel = bTransponivel;</span>
+<span class="nc" id="L73">    }</span>
+
+    public boolean isbMovivel() {
+<span class="nc" id="L76">        return bMovivel;</span>
+    }
+
+    public void setbMovivel(boolean bMovivel) {
+<span class="nc" id="L80">        this.bMovivel = bMovivel;</span>
+<span class="nc" id="L81">    }</span>
+
+    public boolean isbRemovivel() {
+<span class="nc" id="L84">        return bRemovivel;</span>
+    }
+
+    public void setbRemovivel(boolean bRemovivel) {
+<span class="nc" id="L88">        this.bRemovivel = bRemovivel;</span>
+<span class="nc" id="L89">    }</span>
+
+    public boolean isbMortal() {
+<span class="nc" id="L92">        return bMortal;</span>
+    }
+
+    public void setbMortal(boolean bMortal) {
+<span class="nc" id="L96">        this.bMortal = bMortal;</span>
+<span class="nc" id="L97">    }</span>
+
+    public void autoDesenho(){
+<span class="nc" id="L100">        Desenho.desenhar(this.iImage, this.pPosicao.getColuna(), this.pPosicao.getLinha());</span>
+<span class="nc" id="L101">    }</span>
+
+    public void setPosicao(int linha, int coluna) {
+<span class="nc" id="L104">        pPosicao.setPosicao(linha, coluna);</span>
+<span class="nc" id="L105">    }</span>
+
+    public void moveUp() {
+
+<span class="nc" id="L109">    }</span>
+
+    public void moveDown() {
+
+<span class="nc" id="L113">    }</span>
+
+    public void moveRight() {
+
+<span class="nc" id="L117">    }</span>
+
+    public void moveLeft() {
+
+<span class="nc" id="L121">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

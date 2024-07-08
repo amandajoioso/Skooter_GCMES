@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BlocoMovivel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Skooter</a> &gt; <a href="index.source.html" class="el_package">com.example.Skooter.Modelo</a> &gt; <span class="el_source">BlocoMovivel.java</span></div><h1>BlocoMovivel.java</h1><pre class="source lang-java linenums">package com.example.Skooter.Modelo;
+
+import com.example.Skooter.Auxiliar.Desenho;
+import com.example.Skooter.Modelo.Personagem;
+import java.util.Objects;
+
+public class BlocoMovivel extends Personagem {
+    private final String nome;
+    private final boolean arrastando; // Indica se o bloco está sendo arrastado pelo Skoot
+
+    public BlocoMovivel(String sNomeImagePNG) {
+<span class="nc" id="L12">        super(sNomeImagePNG);</span>
+<span class="nc" id="L13">        this.nome = sNomeImagePNG;</span>
+<span class="nc" id="L14">        this.setbTransponivel(false);</span>
+<span class="nc" id="L15">        this.setbMovivel(true);</span>
+<span class="nc" id="L16">        this.arrastando = false; // Inicialmente, não está sendo arrastado</span>
+
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if(Objects.equals(sNomeImagePNG, &quot;blocoVermelhoArrastavel.png&quot;)){</span>
+<span class="nc" id="L19">            this.setbRemovivel(false);</span>
+        }
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        else if(Objects.equals(sNomeImagePNG, &quot;blocoVerde.png&quot;)){</span>
+<span class="nc" id="L22">            this.setbRemovivel(true);</span>
+        }
+
+<span class="nc" id="L25">    }</span>
+
+    public void moveUp() {
+
+<span class="nc" id="L29">    }</span>
+
+    public void moveDown() {
+
+<span class="nc" id="L33">    }</span>
+
+    public void moveRight() {
+
+<span class="nc" id="L37">    }</span>
+
+    public void moveLeft() {
+
+<span class="nc" id="L41">    }</span>
+
+
+    public void autoDesenho() {
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (arrastando) {</span>
+<span class="nc" id="L46">            Skoot skoot = new Skoot(&quot;skoot.png&quot;);</span>
+            // Atualize a posição do bloco para seguir o Skoot
+<span class="nc" id="L48">            setPosicao(skoot.getPosicao().getLinha(), skoot.getPosicao().getColuna());</span>
+        }
+<span class="nc" id="L50">        super.autoDesenho();</span>
+<span class="nc" id="L51">    }</span>
+
+    public String getNome(){
+<span class="nc" id="L54">        return nome;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
