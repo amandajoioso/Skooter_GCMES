@@ -7,6 +7,8 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -24,6 +26,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 
 
@@ -141,6 +149,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase2(skoot);
                 faseAtual = fase;
                 nivel = 2;
+                showPopUp();
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 2){
@@ -152,6 +161,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase3(skoot);
                 faseAtual = fase;
                 nivel = 3;
+                showPopUp();
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 3){
@@ -163,6 +173,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase4(skoot);
                 faseAtual = fase;
                 nivel = 4;
+                showPopUp();
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 4){
@@ -174,6 +185,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase5(skoot);
                 faseAtual = fase;
                 nivel = 5;
+                showPopUp();
             }
 
             // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
@@ -325,6 +337,28 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.skoot.setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
 
         repaint();
+    }
+
+    // Método para mostrar a tela de parabéns ao jogador por concluir a fase
+    private void showPopUp(){
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Stage Complete!");
+
+        dialog.setSize(300, 200);
+
+        dialog.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(); 
+        panel.setLayout(new BorderLayout()); 
+
+        panel.setBackground(Color.PINK); 
+
+        JLabel messageLabel = new JLabel("Parabéns! Fase concluída com sucesso!", SwingConstants.CENTER);
+        panel.add(messageLabel, BorderLayout.CENTER);
+
+        dialog.add(panel);
+
+        dialog.setVisible(true);
     }
 
 
