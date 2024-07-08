@@ -22,6 +22,12 @@ public class ZigueZague extends Personagem{
         Random rand = new Random();
         int iDirecao = rand.nextInt(4);
 
+        moveDirecao(iDirecao);
+
+        super.autoDesenho();
+    }
+
+    public void moveDirecao(int iDirecao){
         if(iDirecao == 0){
             this.pos = new Posicao(pPosicao.getLinha(), pPosicao.getColuna() + 1);
             if(!Desenho.acessoATelaDoJogo().colisao2(pos) && pos.posicaoValida())
@@ -42,8 +48,6 @@ public class ZigueZague extends Personagem{
             if(!Desenho.acessoATelaDoJogo().colisao2(pos) && pos.posicaoValida())
                 this.setPosicao(pPosicao.getLinha() - 1, pPosicao.getColuna());
         }
-
-        super.autoDesenho();
     }
 
 
