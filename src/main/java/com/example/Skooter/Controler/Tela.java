@@ -64,6 +64,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer(){
         return g2;
     }
+    
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
@@ -71,8 +72,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*************Desenha cenário de fundo**************/
 
         desenhaCenario(g2);
-        
+        carregaProximaFase();
 
+        g.dispose();
+        g2.dispose();
+        if (!getBufferStrategy().contentsLost()) {
+            getBufferStrategy().show();
+        }
+
+    }
+
+    public void carregaProximaFase(){
         // Verifica se a lista de fase atual não está vazia
         if (!this.faseAtual.isEmpty()) {
             // Processa e desenha todos os elementos presentes na fase atual
@@ -80,49 +90,54 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.desenhaTudo(faseAtual);
 
             // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
-            if(!this.cj.temFruta(faseAtual) && nivel == 1){
+            if(!this.cj.temFruta(faseAtual)){
                 this.faseAtual.clear();
                 skoot = new Skoot("skoot.png");
                 skoot.setPosicao(5, 5);
                 this.addPersonagem(skoot);
                 fase = new Fases();
-                fase.setFase2(skoot);
-                faseAtual = fase;
-                nivel = 2;
+
+                switch(nivel){
+                    case 1:
+                    fase.setFase2(skoot);
+                    faseAtual = fase;
+                    nivel = 2;
+                    break;
+
+                    case 2:
+                    fase.setFase3(skoot);
+                    faseAtual = fase;
+                    nivel = 3;
+                    break;
+
+                    case 3:
+                    fase.setFase4(skoot);
+                    faseAtual = fase;
+                    nivel = 4;
+                    break;
+
+                    case 4:
+                    skoot.setPosicao(1, 1);
+                    fase.setFase5(skoot);
+                    faseAtual = fase;
+                    nivel = 5;
+                    break;
+
+                    case 5:
+                    if(!this.cj.temFruta(faseAtual)){
+                        this.faseAtual.clear();
+                        nivel = 7;
+                    }
+                    break;
+
+                    default:
+                    System.out.println("Erro ao carregar fase");
+                    break;
+
+                }
+                
             }
 
-            else if(!this.cj.temFruta(faseAtual) && nivel == 2){
-                this.faseAtual.clear();
-                skoot = new Skoot("skoot.png");
-                skoot.setPosicao(5, 5);
-                this.addPersonagem(skoot);
-                fase = new Fases();
-                fase.setFase3(skoot);
-                faseAtual = fase;
-                nivel = 3;
-            }
-
-            else if(!this.cj.temFruta(faseAtual) && nivel == 3){
-                this.faseAtual.clear();
-                skoot = new Skoot("skoot.png");
-                skoot.setPosicao(5, 5);
-                this.addPersonagem(skoot);
-                fase = new Fases();
-                fase.setFase4(skoot);
-                faseAtual = fase;
-                nivel = 4;
-            }
-
-            else if(!this.cj.temFruta(faseAtual) && nivel == 4){
-                this.faseAtual.clear();
-                skoot = new Skoot("skoot.png");
-                skoot.setPosicao(1, 1);
-                this.addPersonagem(skoot);
-                fase = new Fases();
-                fase.setFase5(skoot);
-                faseAtual = fase;
-                nivel = 5;
-            }
 
             // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
             // Caso as vidas tenham acabado, é mostrada a tela de derrota
@@ -133,20 +148,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 }
             }
 
-            // Verifica se o jogador concluiu o jogo
-            else if(!this.cj.temFruta(faseAtual) && nivel == 5){
-                this.faseAtual.clear();
-                nivel = 7;
-            }
+            
         }
 
-        g.dispose();
-        g2.dispose();
-        if (!getBufferStrategy().contentsLost()) {
-            getBufferStrategy().show();
-        }
     }
-
 
     public void desenhaCenario(Graphics g2){
         for (int i = 0; i < Consts.RES; i++) {
@@ -360,6 +365,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
+    
     public void mouseMoved(MouseEvent e) {
     }
 
@@ -551,7 +557,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         return jogo;
     }
-
 
     public Skoot carregaSkoot() {
         // Carrega o objeto Skoot da fase salva
