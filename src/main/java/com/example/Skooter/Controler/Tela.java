@@ -33,8 +33,7 @@ import com.example.Skooter.Auxiliar.Posicao;
 import com.example.Skooter.Modelo.BlocoSeta;
 import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
-
-
+import com.example.Skooter.Musica;
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
@@ -266,6 +265,81 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
+
+        // Verifica se a lista de fase atual não está vazia
+        if (!this.faseAtual.isEmpty()) {
+            // Processa e desenha todos os elementos presentes na fase atual
+            this.cj.processaTudo(faseAtual);
+            this.cj.desenhaTudo(faseAtual);
+
+            // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
+            if(!this.cj.temFruta(faseAtual) && nivel == 1){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase2(skoot);
+                faseAtual = fase;
+                nivel = 2;
+                Musica musica = new Musica(new java.io.File("musica/Density&Time.wav").getAbsolutePath());
+                musica.stop();
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 2){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase3(skoot);
+                faseAtual = fase;
+                nivel = 3;
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 3){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase4(skoot);
+                faseAtual = fase;
+                nivel = 4;
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 4){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(1, 1);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase5(skoot);
+                faseAtual = fase;
+                nivel = 5;
+            }
+
+            // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
+            // Caso as vidas tenham acabado, é mostrada a tela de derrota
+            else if(this.cj.temFruta(faseAtual)){
+                if(skoot.getVidas() == 0){
+                    this.faseAtual.clear();
+                    nivel = 6;
+                }
+            }
+
+            // Verifica se o jogador concluiu o jogo
+            else if(!this.cj.temFruta(faseAtual) && nivel == 5){
+                this.faseAtual.clear();
+                nivel = 7;
+            }
+        }
+
+        g.dispose();
+        g2.dispose();
+        if (!getBufferStrategy().contentsLost()) {
+            getBufferStrategy().show();
         }
     }
 

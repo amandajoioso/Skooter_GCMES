@@ -10,6 +10,7 @@ import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
 import com.example.Skooter.Modelo.ZigueZague;
 
+import com.example.Skooter.Musica;
 
 public class Fases extends ArrayList<Personagem>{
 
