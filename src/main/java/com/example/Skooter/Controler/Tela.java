@@ -628,5 +628,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return null; // Retorna null caso nenhum objeto Skoot seja encontrado
     }
 
+    ArrayList<Personagem> getFaseAtual(){
+        return this.faseAtual;
+    }
 
+    public void setSkoot(Skoot novoSkoot){
+        this.skoot = novoSkoot;
+    }
+
+    public int getNivel(){
+        return this.nivel;
+    }
 }
