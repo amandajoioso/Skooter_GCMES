@@ -24,8 +24,7 @@ import com.example.Skooter.Auxiliar.Posicao;
 import com.example.Skooter.Modelo.BlocoSeta;
 import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
-
-
+import com.example.Skooter.Musica;
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
@@ -141,6 +140,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase2(skoot);
                 faseAtual = fase;
                 nivel = 2;
+                Musica musica = new Musica(new java.io.File("musica/Density&Time.wav").getAbsolutePath());
+                musica.stop();
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 2){
