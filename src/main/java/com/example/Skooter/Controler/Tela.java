@@ -18,6 +18,15 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+
 import com.example.Skooter.Auxiliar.Consts;
 import com.example.Skooter.Auxiliar.Desenho;
 import com.example.Skooter.Auxiliar.Posicao;
@@ -82,6 +91,50 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     }
 
+    // Método para mostrar a tela de parabéns ao jogador por concluir a fase
+    private void showPopUp(){
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Stage Complete!");
+
+        dialog.setSize(300, 200);
+
+        dialog.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(); 
+        panel.setLayout(new BorderLayout()); 
+
+        panel.setBackground(Color.PINK); 
+
+        JLabel messageLabel = new JLabel("Parabéns! Fase concluída com sucesso!", SwingConstants.CENTER);
+        panel.add(messageLabel, BorderLayout.CENTER);
+
+        dialog.add(panel);
+
+        dialog.setVisible(true);
+    }
+
+    private void showPopUpVida(){
+        JDialog dialog = new JDialog();
+        dialog.setTitle("You collided with an enemy");
+
+        dialog.setSize(300, 200);
+
+        dialog.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(); 
+        panel.setLayout(new BorderLayout()); 
+
+        panel.setBackground(Color.PINK); 
+
+        JLabel messageLabel = new JLabel("Health points remaining: " + skoot.getVidas(), SwingConstants.CENTER);
+        panel.add(messageLabel, BorderLayout.CENTER);
+
+        dialog.add(panel);
+
+        dialog.setVisible(true);
+    }
+
+
     public void carregaProximaFase(){
         // Verifica se a lista de fase atual não está vazia
         if (!this.faseAtual.isEmpty()) {
@@ -102,18 +155,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     fase.setFase2(skoot);
                     faseAtual = fase;
                     nivel = 2;
+                    showPopUp();
                     break;
 
                     case 2:
                     fase.setFase3(skoot);
                     faseAtual = fase;
                     nivel = 3;
+                    showPopUp();
                     break;
 
                     case 3:
                     fase.setFase4(skoot);
                     faseAtual = fase;
                     nivel = 4;
+                    showPopUp();
                     break;
 
                     case 4:
@@ -121,9 +177,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     fase.setFase5(skoot);
                     faseAtual = fase;
                     nivel = 5;
+                    showPopUp();
                     break;
 
                     case 5:
+                    //vitoria
                     if(!this.cj.temFruta(faseAtual)){
                         this.faseAtual.clear();
                         nivel = 7;
@@ -142,7 +200,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
             // Caso as vidas tenham acabado, é mostrada a tela de derrota
             else if(this.cj.temFruta(faseAtual)){
-                if(skoot.getVidas() == 0){
+                if(skoot.getVidas() <= 0){
                     this.faseAtual.clear();
                     nivel = 6;
                 }
@@ -407,6 +465,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
                 } else if (obstaculo.isbMortal()) {
                     skoot.perderVida();
+                    //PopUp de perdeu vida
+                    showPopUpVida();
                 }
                 return true;
             }
