@@ -11,6 +11,8 @@ import com.example.Skooter.Modelo.Skoot;
 import com.example.Skooter.Modelo.ZigueZague;
 
 
+import com.example.Skooter.Musica;
+
 public class Fases extends ArrayList<Personagem>{
 
     public void setFase1(Skoot skoot){
