@@ -4,14 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.Skooter.Auxiliar.Posicao;
-import com.example.Skooter.Modelo.BlocoEstatico;
-import com.example.Skooter.Modelo.Fruta;
-import com.example.Skooter.Modelo.Personagem;
+
 import com.example.Skooter.Modelo.Skoot;
 import com.example.Skooter.Modelo.ZigueZague;
 
-import java.awt.event.KeyEvent;
 
 public class TelaTest {
 

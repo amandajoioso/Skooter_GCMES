@@ -341,7 +341,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
 
             if(!this.musicaEstaTocando) {
-                System.out.println(nivel);
                 String caminhoMusica;
                 switch (nivel) {
                     case 1:
@@ -372,7 +371,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     default:
                         break;
                 }
-                System.out.println(this.musicaAtual.toString());
                 this.musicaEstaTocando = true;
             } 
         }

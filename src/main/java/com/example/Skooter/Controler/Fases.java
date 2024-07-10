@@ -10,20 +10,13 @@ import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
 import com.example.Skooter.Modelo.ZigueZague;
 
-import com.example.Skooter.Musica;
+
 
 public class Fases extends ArrayList<Personagem>{
 
     public void setFase1(Skoot skoot){
-        /*String caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
-        Musica musica = new Musica(caminhoMusica);
-        musica.play(); // Mudança de tocar() para play()*/
-
-
         this.clear();
         this.add(skoot);
-
-
 
         //Blocos
         BlocoEstatico bv1 = new BlocoEstatico("blocoVermelho.png");
