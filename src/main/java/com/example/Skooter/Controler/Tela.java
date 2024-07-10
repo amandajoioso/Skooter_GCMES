@@ -43,6 +43,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private final ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int nivel = 0;
+    private boolean musicaEstaTocando = false;
+    private Musica musicaAtual;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -273,6 +275,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.processaTudo(faseAtual);
             this.cj.desenhaTudo(faseAtual);
 
+
             // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
             if(!this.cj.temFruta(faseAtual) && nivel == 1){
                 this.faseAtual.clear();
@@ -283,8 +286,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase2(skoot);
                 faseAtual = fase;
                 nivel = 2;
-                Musica musica = new Musica(new java.io.File("musica/Density&Time.wav").getAbsolutePath());
-                musica.stop();
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 2){
@@ -296,6 +299,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase3(skoot);
                 faseAtual = fase;
                 nivel = 3;
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 3){
@@ -334,9 +339,45 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 this.faseAtual.clear();
                 nivel = 7;
             }
+
+            if(!this.musicaEstaTocando) {
+                System.out.println(nivel);
+                String caminhoMusica;
+                switch (nivel) {
+                    case 1:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 2:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 3:
+                        caminhoMusica = new java.io.File("musica/IamGirlAndLikeYou.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 4:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 5:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    default:
+                        break;
+                }
+                System.out.println(this.musicaAtual.toString());
+                this.musicaEstaTocando = true;
+            } 
         }
 
-        g.dispose();
+        //g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
