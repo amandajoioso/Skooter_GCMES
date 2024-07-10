@@ -34,6 +34,8 @@ import com.example.Skooter.Auxiliar.Posicao;
 import com.example.Skooter.Modelo.BlocoSeta;
 import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
+import com.example.Skooter.Musica;
+
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
@@ -43,7 +45,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private final ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int nivel = 0;
+
     private Instant startTime;  // Adicionado
+
+    private boolean musicaEstaTocando = false;
+    private Musica musicaAtual;
+
 
     public Tela() {
         Desenho.setCenario(this);
@@ -271,6 +278,118 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
+
+        // Verifica se a lista de fase atual não está vazia
+        if (!this.faseAtual.isEmpty()) {
+            // Processa e desenha todos os elementos presentes na fase atual
+            this.cj.processaTudo(faseAtual);
+            this.cj.desenhaTudo(faseAtual);
+
+
+            // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
+            if(!this.cj.temFruta(faseAtual) && nivel == 1){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase2(skoot);
+                faseAtual = fase;
+                nivel = 2;
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 2){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase3(skoot);
+                faseAtual = fase;
+                nivel = 3;
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 3){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase4(skoot);
+                faseAtual = fase;
+                nivel = 4;
+            }
+
+            else if(!this.cj.temFruta(faseAtual) && nivel == 4){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(1, 1);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                fase.setFase5(skoot);
+                faseAtual = fase;
+                nivel = 5;
+            }
+
+            // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
+            // Caso as vidas tenham acabado, é mostrada a tela de derrota
+            else if(this.cj.temFruta(faseAtual)){
+                if(skoot.getVidas() == 0){
+                    this.faseAtual.clear();
+                    nivel = 6;
+                }
+            }
+
+            // Verifica se o jogador concluiu o jogo
+            else if(!this.cj.temFruta(faseAtual) && nivel == 5){
+                this.faseAtual.clear();
+                nivel = 7;
+            }
+
+            if(!this.musicaEstaTocando) {
+                String caminhoMusica;
+                switch (nivel) {
+                    case 1:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 2:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 3:
+                        caminhoMusica = new java.io.File("musica/IamGirlAndLikeYou.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 4:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 5:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    default:
+                        break;
+                }
+                this.musicaEstaTocando = true;
+            } 
+        }
+
+        //g.dispose();
+        g2.dispose();
+        if (!getBufferStrategy().contentsLost()) {
+            getBufferStrategy().show();
         }
     }
 
@@ -632,5 +751,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
         return null; // Retorna null caso nenhum objeto Skoot seja encontrado
+    }
+
+    ArrayList<Personagem> getFaseAtual(){
+        return this.faseAtual;
+    }
+
+    public void setSkoot(Skoot novoSkoot){
+        this.skoot = novoSkoot;
+    }
+
+    public int getNivel(){
+        return this.nivel;
     }
 }
