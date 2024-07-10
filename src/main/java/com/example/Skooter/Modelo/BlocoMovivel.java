@@ -1,7 +1,5 @@
 package com.example.Skooter.Modelo;
 
-import com.example.Skooter.Auxiliar.Desenho;
-import com.example.Skooter.Modelo.Personagem;
 import java.util.Objects;
 
 public class BlocoMovivel extends Personagem {

@@ -12,11 +12,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
 
 import com.example.Skooter.Auxiliar.Consts;
 import com.example.Skooter.Auxiliar.Desenho;
@@ -24,7 +34,7 @@ import com.example.Skooter.Auxiliar.Posicao;
 import com.example.Skooter.Modelo.BlocoSeta;
 import com.example.Skooter.Modelo.Personagem;
 import com.example.Skooter.Modelo.Skoot;
-
+import com.example.Skooter.Musica;
 
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
@@ -36,22 +46,24 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Graphics g2;
     private int nivel = 0;
 
+    private Instant startTime;  // Adicionado
+
+    private boolean musicaEstaTocando = false;
+    private Musica musicaAtual;
+
+
     public Tela() {
         Desenho.setCenario(this);
         initComponents();
         this.addMouseListener(this); /*mouse*/
-
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-
         faseAtual = new ArrayList<Personagem>();
-
-
+        startTime = Instant.now();  // Inicializado no construtor
     }
-
 
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
@@ -64,11 +76,154 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer(){
         return g2;
     }
+
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
         /*************Desenha cenário de fundo**************/
+
+        desenhaCenario(g2);
+        carregaProximaFase();
+
+        g.dispose();
+        g2.dispose();
+        if (!getBufferStrategy().contentsLost()) {
+            getBufferStrategy().show();
+        }
+
+    }
+
+    // Método para mostrar a tela de parabéns ao jogador por concluir a fase
+    private void showPopUp(){
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Stage Complete!");
+
+        dialog.setSize(300, 200);
+
+        dialog.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        panel.setBackground(Color.PINK);
+
+        // Calcula o tempo de jogo
+        Instant endTime = Instant.now();
+        Duration gameTime = Duration.between(startTime, endTime);
+        long minutes = gameTime.toMinutes();
+        long seconds = gameTime.minusMinutes(minutes).getSeconds();
+
+        JLabel messageLabel = new JLabel(
+                "<html>Parabéns! Fase concluída com sucesso!<br>Tempo de jogo: " + minutes + "m " + seconds + "s</html>",
+                SwingConstants.CENTER
+        );
+        panel.add(messageLabel, BorderLayout.CENTER);
+
+        dialog.add(panel);
+
+        dialog.setVisible(true);
+    }
+
+    private void showPopUpVida(){
+        JDialog dialog = new JDialog();
+        dialog.setTitle("You collided with an enemy");
+
+        dialog.setSize(300, 200);
+
+        dialog.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        panel.setBackground(Color.PINK);
+
+        JLabel messageLabel = new JLabel("Health points remaining: " + skoot.getVidas(), SwingConstants.CENTER);
+        panel.add(messageLabel, BorderLayout.CENTER);
+
+        dialog.add(panel);
+
+        dialog.setVisible(true);
+    }
+
+    public void carregaProximaFase(){
+        // Verifica se a lista de fase atual não está vazia
+        if (!this.faseAtual.isEmpty()) {
+            // Processa e desenha todos os elementos presentes na fase atual
+            this.cj.processaTudo(faseAtual);
+            this.cj.desenhaTudo(faseAtual);
+
+            // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
+            if(!this.cj.temFruta(faseAtual)){
+                this.faseAtual.clear();
+                skoot = new Skoot("skoot.png");
+                skoot.setPosicao(5, 5);
+                this.addPersonagem(skoot);
+                fase = new Fases();
+                startTime = Instant.now(); // Adicionado para redefinir o tempo de início
+
+                switch(nivel){
+                    case 1:
+                        fase.setFase2(skoot);
+                        faseAtual = fase;
+                        nivel = 2;
+                        showPopUp();
+                        break;
+
+                    case 2:
+                        fase.setFase3(skoot);
+                        faseAtual = fase;
+                        nivel = 3;
+                        showPopUp();
+                        break;
+
+                    case 3:
+                        fase.setFase4(skoot);
+                        faseAtual = fase;
+                        nivel = 4;
+                        showPopUp();
+                        break;
+
+                    case 4:
+                        skoot.setPosicao(1, 1);
+                        fase.setFase5(skoot);
+                        faseAtual = fase;
+                        nivel = 5;
+                        showPopUp();
+                        break;
+
+                    case 5:
+                        //vitoria
+                        if(!this.cj.temFruta(faseAtual)){
+                            this.faseAtual.clear();
+                            nivel = 7;
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Erro ao carregar fase");
+                        break;
+
+                }
+
+            }
+
+
+            // Verifica se ainda existem frutas na fase atual e se o Skoot ainda tem vidas
+            // Caso as vidas tenham acabado, é mostrada a tela de derrota
+            else if(this.cj.temFruta(faseAtual)){
+                if(skoot.getVidas() <= 0){
+                    this.faseAtual.clear();
+                    nivel = 6;
+                }
+            }
+
+
+        }
+
+    }
+
+    public void desenhaCenario(Graphics g2){
         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 // Desenha o cenário de fundo com base no nível atual
@@ -131,6 +286,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.processaTudo(faseAtual);
             this.cj.desenhaTudo(faseAtual);
 
+
             // Verifica se não há mais frutas na fase atual e o nível para decidir se deve ir ao próximo nível
             if(!this.cj.temFruta(faseAtual) && nivel == 1){
                 this.faseAtual.clear();
@@ -141,6 +297,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase2(skoot);
                 faseAtual = fase;
                 nivel = 2;
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 2){
@@ -152,6 +310,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 fase.setFase3(skoot);
                 faseAtual = fase;
                 nivel = 3;
+                this.musicaAtual.stop();
+                this.musicaEstaTocando = false;
             }
 
             else if(!this.cj.temFruta(faseAtual) && nivel == 3){
@@ -190,9 +350,43 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 this.faseAtual.clear();
                 nivel = 7;
             }
+
+            if(!this.musicaEstaTocando) {
+                String caminhoMusica;
+                switch (nivel) {
+                    case 1:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 2:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 3:
+                        caminhoMusica = new java.io.File("musica/IamGirlAndLikeYou.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 4:
+                        caminhoMusica = new java.io.File("musica/Density&Time.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    case 5:
+                        caminhoMusica = new java.io.File("musica/froggy-adventure.wav").getAbsolutePath();
+                        this.musicaAtual = new Musica(caminhoMusica);
+                        this.musicaAtual.play(); // Mudança de tocar() para play()
+                        break;
+                    default:
+                        break;
+                }
+                this.musicaEstaTocando = true;
+            } 
         }
 
-        g.dispose();
+        //g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
@@ -271,6 +465,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             fase.setFase1(skoot);
             faseAtual = fase;
             nivel = 1;
+            startTime = Instant.now();  // Redefine o tempo de início ao reiniciar
         }
 
         // vai para o Menu Principal
@@ -305,7 +500,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             faseAtual = fase;
             this.skoot = carregaSkoot();
             this.nivel = fase.getNivel(); // Definir o valor do nível recuperado
-
+            startTime = Instant.now();  // Redefine o tempo de início ao recarregar
         }
 
         if(nivel == 1) {
@@ -353,6 +548,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
+
     public void mouseMoved(MouseEvent e) {
     }
 
@@ -394,6 +590,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
                 } else if (obstaculo.isbMortal()) {
                     skoot.perderVida();
+                    //PopUp de perdeu vida
+                    showPopUpVida();
                 }
                 return true;
             }
@@ -545,7 +743,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return jogo;
     }
 
-
     public Skoot carregaSkoot() {
         // Carrega o objeto Skoot da fase salva
         for (Personagem personagem : faseAtual) {
@@ -556,5 +753,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return null; // Retorna null caso nenhum objeto Skoot seja encontrado
     }
 
+    ArrayList<Personagem> getFaseAtual(){
+        return this.faseAtual;
+    }
 
+    public void setSkoot(Skoot novoSkoot){
+        this.skoot = novoSkoot;
+    }
+
+    public int getNivel(){
+        return this.nivel;
+    }
 }
